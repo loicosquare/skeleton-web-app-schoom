@@ -1,0 +1,469 @@
+<!--<div class="row mt-4" style="padding: 20px;">-->
+<!--  <div class="col-md-4">-->
+<!--    <div class="card">-->
+<!--      <div class="card-body">-->
+<!--        <h5 class="card-title">Special title treatment</h5>-->
+<!--        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+<!--        <a href="#" class="btn btn-primary">Go somewhere</a>-->
+<!--        <div class="social-links mt-3">-->
+<!--          &lt;!&ndash; Liens vers les réseaux sociaux avec les icônes Font Awesome &ndash;&gt;-->
+<!--          <a href="lien_vers_linkedin" class="me-2"><i class="fab fa-linkedin fa-2x ml-3"></i></a>-->
+<!--          <a href="lien_vers_github" class="me-2"><i class="fab fa-github fa-2x"></i></a>-->
+<!--          <a href="lien_vers_twitter" class="me-2"><i class="fab fa-twitter fa-2x"></i></a>-->
+<!--          <a href="lien_vers_instagram" class="me-2"><i class="fab fa-instagram fa-2x"></i></a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="col-md-8">-->
+<!--    <div class="row">-->
+<!--      <div class="col-md-3">-->
+<!--        <div class="card mb-3">-->
+<!--          <div class="card-body">-->
+<!--            <h3 class="card-title">Ma recherche</h3>-->
+<!--            <p class="card-text">Je reçois des offres personnalisées</p>-->
+<!--            <p class="card-text">Je suis visible auprès des recruteurs</p>-->
+<!--            <p class="card-text">Je reçois des opportunités de recruteurs</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3">-->
+<!--        <div class="card mb-3">-->
+<!--          <div class="card-body">-->
+<!--            <h3 class="card-title">Ma situation actuelle</h3>-->
+<!--            <p class="card-text">Statut : En poste</p>-->
+<!--            <p class="card-text">Poste actuel : Développeur frontend</p>-->
+<!--            <p class="card-text">Lieu de résidence : Villeurbanne (69)</p>-->
+<!--            <p class="card-text">Mis à jour : il y a plus de 21 mois</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3">-->
+<!--        <div class="card mb-3">-->
+<!--          <div class="card-body">-->
+<!--            <h3 class="card-title">Mes CV</h3>-->
+<!--            <p class="card-text">CV visible auprès des recruteurs</p>-->
+<!--            <p class="card-text">CV vu par 0 recruteur</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3">-->
+<!--        <div class="card mb-3">-->
+<!--          <div class="card-body">-->
+<!--            <h3 class="card-title">Mes informations personnelles</h3>-->
+<!--            <p class="card-text">Nom: TEMENA LOIC</p>-->
+<!--            <p class="card-text">Email: [votre email]</p>-->
+<!--            <p class="card-text">Téléphone: [votre téléphone]</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <form class="mt-2" #profileForm="ngForm" (ngSubmit)="saveUser(profileForm)">-->
+<!--      <div class="form-group">-->
+<!--        <label for="nom">Nom</label>-->
+<!--        <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="Entrez votre nom" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="prenom">Prénom</label>-->
+<!--        <input type="text" class="form-control" ngModel name="prenom" id="prenom" placeholder="Entrez votre prénom" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="email">Email</label>-->
+<!--        <input type="email" class="form-control" ngModel name="email" id="email" placeholder="Entrez votre email" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="password">Créer votre mot de passe</label>-->
+<!--        <input type="password" class="form-control" ngModel name="password" id="password" placeholder="Entrez votre mot de passe" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="telephone">Téléphone (optionnel)</label>-->
+<!--        <input type="text" class="form-control" ngModel name="telephone" id="telephone" placeholder="Entrez votre numéro de téléphone">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="pays">Pays de résidence</label>-->
+<!--        <input type="text" class="form-control" ngModel name="pays" id="pays" placeholder="Saisissez votre pays" required>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="ville">Ville de résidence</label>-->
+<!--        <input type="text" class="form-control" ngModel name="ville" id="ville" placeholder="Saisissez votre ville" required>-->
+<!--      </div>-->
+<!--      <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Soumettre</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-white">Vos informations</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="job-detail mt-2 p-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="resume-user mb-5">
+              <i class="mdi mdi-account text-white"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="custom-form">
+          <form [formGroup]="userInfoForm" (ngSubmit)="updateUserInfo()">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="username" class="text-muted">Username</label>
+                  <input id="username" type="text" class="form-control resume" value="{{currentUser?.username}}" formControlName="username" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="name" class="text-muted">Name</label>
+                  <input id="name" type="text" class="form-control resume" formControlName="name" value="{{currentUser?.password}}" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="pays" class="text-muted">Pays</label>
+                  <input id="pays" type="text" class="form-control resume" formControlName="pays" value="{{currentUser?.pays}}" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="email" class="text-muted">Email</label>
+                  <input id="email" type="text" class="form-control resume" formControlName="email" value="{{currentUser?.email}}" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="password" class="text-muted">Password</label>
+                  <input id="password" type="password" readonly class="form-control resume" formControlName="password" value="{{currentUser?.password}}" placeholder="" style="cursor: not-allowed">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="telephone" class="text-muted">Téléphone</label>
+                  <input id="telephone" type="number" class="form-control resume" formControlName="telephone" value="{{currentUser?.telephone}}" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="ville" class="text-muted">Ville</label>
+                  <input id="ville" type="text" class="form-control resume" formControlName="ville" value="{{currentUser?.ville}}" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center d-flex justify-content-center">
+                  <button type="submit">Enregister Infos <i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-white mt-5">Contact Information</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="job-detail mt-2 p-4">
+        <div class="custom-form">
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="citys" class="text-muted">City</label>
+                  <div class="form-button">
+                    <select class="nice-select">
+                      <option data-display="City">City</option>
+                      <option value="1">Abilene</option>
+                      <option value="2">Babbitt</option>
+                      <option value="3">Cape Coral</option>
+                      <option value="4">Dallas</option>
+                      <option value="5">Eloy</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="state" class="text-muted">State</label>
+                  <div class="form-button">
+                    <select class="nice-select">
+                      <option data-display="State">State</option>
+                      <option value="1">Alabama</option>
+                      <option value="3">Hawaii</option>
+                      <option value="4">Maine</option>
+                      <option value="5">Oregon</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="country" class="text-muted">Country</label>
+                  <div class="form-button">
+                    <select class="nice-select">
+                      <option data-display="Country">Country</option>
+                      <option value="1">Alabama</option>
+                      <option value="2">Delaware</option>
+                      <option value="3">Iowa</option>
+                      <option value="4">Missouri</option>
+                      <option value="5">New York</option>
+                      <option value="6">Utah</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="phone" class="text-muted">Phone</label>
+                  <input id="phone" type="text" class="form-control resume" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="e-mail" class="text-muted">E-mail</label>
+                  <input id="e-mail" type="text" class="form-control resume" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group app-label">
+                  <label for="website" class="text-muted">Website</label>
+                  <input id="website" type="text" class="form-control resume" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group app-label">
+                  <label for="address">Address</label>
+                  <textarea id="address" rows="4" class="form-control resume" placeholder=""></textarea>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-white mt-5">Education Details</h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!currentFormation || false">
+    <div class="col-lg-12">
+      <div class="job-detail mt-2 p-4">
+        <div class="custom-form">
+          <form [formGroup]="formationForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group app-label">
+                  <label for="date-debut" class="text-muted">Date debut</label>
+                  <input id="date-debut" type="date" class="form-control" formControlName="anneeDebut" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group app-label">
+                  <label for="date-fin" class="text-muted">Date fin</label>
+                  <input id="date-fin" type="date" class="form-control" formControlName="anneeFin" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group app-label">
+                  <label for="ecole" class="text-muted">Ecole</label>
+                  <input id="ecole" type="text" class="form-control" formControlName="ecole" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group app-label">
+                  <label for="diplome" class="text-muted">Degree/Certification/Diplome</label>
+                  <input id="diplome" type="text" class="form-control resume" formControlName="diplome" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group app-label">
+                      <label for="lieu" class="text-muted">Lieu</label>
+                      <input id="lieu" type="text" class="form-control" formControlName="lieu" placeholder="">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group app-label">
+                      <label for="domaineEtudes" class="text-muted">Domaine d'étude</label>
+                      <input id="domaineEtudes" type="text" class="form-control resume" formControlName="domaineEtudes" placeholder="">
+                    </div>
+                  </div>
+
+<!--                  <div class="col-md-6" style="display: none">
+                    <div class="form-group app-label">
+                      <label for="id" class="text-muted">id</label>
+                      <input id="id" type="text" class="form-control resume" formControlName="id" placeholder="">
+                    </div>
+                  </div>-->
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="text-center d-flex justify-content-center">
+        <button type="submit" (click)="updateOrAddFormation()">{{buttonFormationTitle}}<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-white mt-5">Work Experience</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="job-detail mt-2 p-4">
+        <div class="custom-form">
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group app-label">
+                  <label for="company-name" class="text-muted">Company Name</label>
+                  <input id="company-name" type="text" class="form-control resume" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group app-label">
+                  <label for="job-position" class="text-muted">Job Position</label>
+                  <input id="job-position" type="text" class="form-control resume" placeholder="">
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group app-label">
+                  <label for="location" class="text-muted">Location</label>
+                  <div class="form-button">
+                    <select class="nice-select">
+                      <option data-display="Search">Search</option>
+                      <option value="1">New York</option>
+                      <option value="2">Los Angeles</option>
+                      <option value="3">Chicago</option>
+                      <option value="4">Houston</option>
+                      <option value="5">Indiana</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group app-label">
+                      <label for="date-from" class="text-muted">Date From</label>
+                      <input id="date-from" type="text" class="form-control resume" placeholder="01-Jan-2018">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group app-label">
+                      <label for="date-to" class="text-muted">Date To</label>
+                      <input id="date-to" type="text" class="form-control resume" placeholder="31-March-2019">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group app-label">
+                  <label for="addition-information-1">Addition Information</label>
+                  <textarea id="addition-information-1" rows="4" class="form-control resume" placeholder=""></textarea>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="text-center d-flex justify-content-center">
+        <button type="submit">Enregister Exp</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-white mt-5">Skills /Competences</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="job-detail mt-2 p-4">
+        <div class="custom-form">
+          <form>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group app-label">
+                  <label for="skills" class="text-muted">Skills</label>
+                  <input id="skills" type="text" class="form-control resume" placeholder="HTML, CSS, PHP, javascript, ...">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group app-label">
+                  <label for="skill proficiency" class="text-muted">Skill proficiency</label>
+                  <input id="skill proficiency" type="text" class="form-control resume" placeholder="75%">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="text-center d-flex justify-content-center">
+        <button type="submit">Enregister Skills</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<span class="title">Re-bonjour à vous !</span>
+<div>
+  <span class="welcome">Bienvenue sur la page de Login/Register </span>
+  <img src="assets/sun.gif" height="100">
+</div>
+<span class="title">Nous vous recommandons de créer un compte ou de vous connecter 😊</span>
+
+<div class="container">
+  <div class="card">
+    <h2>Connexion</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+      <div class="input-group">
+        <input type="email" placeholder="Nom d'utilisateur" class="form-control" formControlName="email" required>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          L'adresse mail est requise.
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="password" class="form-control" placeholder="Mot de passe" formControlName="password" required>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          Le MDP est requis.
+        </div>
+      </div>
+      <button type="submit" [disabled]="!loginForm.valid">
+        Se connecter <i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i>
+      </button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Inscription</h2>
+    <form>
+      <div class="input-group">
+        <input type="text" placeholder="Nom d'utilisateur" name="username" required>
+      </div>
+      <div class="input-group">
+        <input type="email" placeholder="Email" name="email" required>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Mot de passe" name="password" required>
+      </div>
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+@use "theme";
+@import "./bootstrap/_bootstrap";
+@import url('http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+@import 'ngx-toastr/toastr';
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mini-fab {
+  color : theme.$white !important;
+}
+
+.mat-raised-button {
+  color : theme.$white !important;
+}
+
+table {
+  font-size: medium;
+  tr {
+    height: 57px;
+    td {
+      vertical-align: middle;
+    }
+  }
+
+}
