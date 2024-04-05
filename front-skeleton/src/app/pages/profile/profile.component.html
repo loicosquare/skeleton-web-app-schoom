@@ -165,7 +165,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="text-center d-flex justify-content-center">
-                  <button type="submit">Enregister Infos <i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                  <button type="submit" class="buttonGenerique">Enregister Infos <i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
                 </div>
               </div>
             </div>
@@ -275,6 +275,73 @@
     </div>
   </div>
 
+  <div class="row" *ngFor="let formation of currentFormation; let i = index">
+      <h2>formation - {{formation.id}}</h2>
+      <div class="col-lg-12">
+        <div class="job-detail mt-2 p-4">
+          <div class="custom-form">
+            <form [formGroup]="formationForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group app-label">
+                    <label for="date-debut-{{formation.id}}" class="text-muted">Date debut</label>
+                    <input id="date-debut-{{formation.id}}" type="date" class="form-control" formControlName="anneeDebut" value="{{formation.anneeDebut}}" placeholder="">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group app-label">
+                    <label for="date-fin-{{formation.id}}" class="text-muted">Date fin</label>
+                    <input id="date-fin-{{formation.id}}" type="date" class="form-control" formControlName="anneeFin" value="{{formation.anneeFin}}" placeholder="">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group app-label">
+                    <label for="ecole-{{formation.id}}" class="text-muted">Ecole</label>
+                    <input id="ecole-{{formation.id}}" type="text" class="form-control" formControlName="ecole" value="{{formation.ecole}}" placeholder="">
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group app-label">
+                    <label for="diplome-{{formation.id}}" class="text-muted">Degree/Certification/Diplome</label>
+                    <input id="diplome-{{formation.id}}" type="text" class="form-control resume" formControlName="diplome" value="{{formation.diplome}}" placeholder="">
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group app-label">
+                        <label for="lieu-{{formation.id}}" class="text-muted">Lieu</label>
+                        <input id="lieu-{{formation.id}}" type="text" class="form-control" formControlName="lieu" value="{{formation.lieu}}" placeholder="">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group app-label">
+                        <label for="domaineEtudes-{{formation.id}}" class="text-muted">Domaine d'étude</label>
+                        <input id="domaineEtudes-{{formation.id}}" type="text" class="form-control resume" formControlName="domaineEtudes" value="{{formation.domaineEtudes}}" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="text-center d-flex justify-content-center">
+                    <button class="btn btn-outline-info">Modifier<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                    <button class="btn btn-outline-danger ml-2">Supprimer<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <div class="row" *ngIf="!currentFormation || false">
     <div class="col-lg-12">
       <div class="job-detail mt-2 p-4">
@@ -343,7 +410,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="text-center d-flex justify-content-center">
-        <button type="submit" (click)="updateOrAddFormation()">{{buttonFormationTitle}}<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+        <button type="submit" [ngClass]="buttonFormationTitle == 'Ajouter une formation' ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'" (click)="updateOrAddFormation()">{{buttonFormationTitle}}<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
       </div>
     </div>
   </div>
@@ -423,7 +490,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="text-center d-flex justify-content-center">
-        <button type="submit">Enregister Exp</button>
+        <button type="submit" class="buttonGenerique">Enregister Exp</button>
       </div>
     </div>
   </div>
@@ -438,19 +505,26 @@
     <div class="col-lg-12">
       <div class="job-detail mt-2 p-4">
         <div class="custom-form">
-          <form>
+          <form [formGroup]="competenceForm" (ngSubmit)="addCompetence()">
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group app-label">
-                  <label for="skills" class="text-muted">Skills</label>
-                  <input id="skills" type="text" class="form-control resume" placeholder="HTML, CSS, PHP, javascript, ...">
+                  <label for="skills" class="text-muted">Competence</label>
+                  <input id="skills" type="text" class="form-control resume" formControlName="competence" placeholder="HTML, CSS, PHP, javascript, ...">
                 </div>
               </div>
-
               <div class="col-lg-12">
                 <div class="form-group app-label">
-                  <label for="skill proficiency" class="text-muted">Skill proficiency</label>
-                  <input id="skill proficiency" type="text" class="form-control resume" placeholder="75%">
+                  <label for="skill proficiency" class="text-muted">Niveau</label>
+                  <input id="skill proficiency" type="number" class="form-control resume" formControlName="niveau" placeholder="Entrez un niveau entre 1 et 5">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center d-flex justify-content-center">
+                  <button class="btn btn-outline-info">Modifier<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                  <button class="btn btn-outline-danger ml-2">Supprimer<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
                 </div>
               </div>
             </div>
@@ -459,10 +533,36 @@
       </div>
     </div>
   </div>
-  <div class="row">
+
+  <div class="row" *ngFor="let competence of currentCompetence">
     <div class="col-lg-12">
-      <div class="text-center d-flex justify-content-center">
-        <button type="submit">Enregister Skills</button>
+      <div class="job-detail mt-2 p-4">
+        <div class="custom-form">
+          <form [formGroup]="competenceForm">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group app-label">
+                  <label for="skills-{{competence.id}}" class="text-muted">Competence</label>
+                  <input id="skills-{{competence.id}}" type="text" class="form-control" formControlName="competence" value="competence.competence">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group app-label">
+                  <label for="skill proficiency-{{competence.id}}" class="text-muted">Niveau</label>
+                  <input id="skill proficiency-{{competence.id}}" type="num" class="form-control" formControlName="niveau" value="{{competence.niveau}}">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center d-flex justify-content-center">
+                  <button class="btn btn-outline-info">Modifier<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                  <button class="btn btn-outline-danger ml-2">Supprimer<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

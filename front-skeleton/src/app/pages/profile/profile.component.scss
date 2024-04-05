@@ -75,7 +75,7 @@ h3.text-white {
   background: linear-gradient(to right, #4a0a67, #d50000);
 }
 
-button {
+.buttonGenerique {
   margin-top: 20px;
   padding: 10px;
   border: none;
@@ -85,6 +85,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.buttonGenerique:hover {
   background-color: #d50000;
 }

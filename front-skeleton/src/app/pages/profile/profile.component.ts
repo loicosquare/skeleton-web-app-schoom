@@ -4,7 +4,7 @@ import {Utilisateur} from "../../models/utilisateur.model";
 import { UtilisateurRequest } from "../../models/utils/utilisateurRequest.model"
 import { UtilisateurService } from "../../services/utilisateur.service"
 import { NotificationService } from "../../services/notification.service"
-import { NgIf } from "@angular/common"
+import { NgClass, NgForOf, NgIf } from "@angular/common"
 import { FormationService } from "../../services/formation.service"
 import { ExperienceService } from "../../services/experience.service"
 import { LoisirService } from "../../services/loisir.service"
@@ -19,14 +19,22 @@ import { Formation } from "../../models/formation.model"
     FormsModule,
     ReactiveFormsModule,
     NgIf,
+    NgForOf,
+    NgClass,
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
 export class UserComponent implements OnInit{
   currentUser! : Utilisateur | any;
-  currentFormation! : Formation | Formation[];
+  currentFormation! : any;
+  currentExperience! : any;
+  currentCompetence! : any;
+  currentLoisir! : any;
   userInfoForm : FormGroup;
+  competenceForm : FormGroup;
+  experienceForm : FormGroup;
+  loisirForm : FormGroup;
   formationForm : FormGroup;
   buttonFormationTitle = '';
   public refreshing! : boolean;
@@ -60,12 +68,39 @@ export class UserComponent implements OnInit{
       anneeDebut: new FormControl('', Validators.required),
       anneeFin: new FormControl('', Validators.required)
     });
+
+    this.competenceForm = new FormGroup({
+      competence: new FormControl('', Validators.required),
+      niveau: new FormControl('', Validators.required)
+    });
+
+    this.experienceForm = new FormGroup({
+      titre: new FormControl('', Validators.required),
+      entreprise: new FormControl('', Validators.required),
+      lieu: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      dateDebut: new FormControl('', Validators.required),
+      dateFin: new FormControl('', Validators.required)
+    });
+
+    this.loisirForm = new FormGroup({
+      hobby: new FormControl('', Validators.required)
+    });
   }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     this.userInfoForm.patchValue(this.currentUser);
     this.currentFormation =  this.currentUser.formations;
+    this.currentCompetence = this.currentUser.competences;
+    this.currentExperience = this.currentUser.experiences;
+    this.currentLoisir = this.currentUser.loisirs;
+
+    console.log(this.currentFormation);
+    console.log(this.currentCompetence);
+    console.log(this.currentExperience);
+    console.log(this.currentLoisir);
+
 
     //Afficher le texte du bouton en fonction du contenu de l'objet currentFormation
     if (this.currentFormation) {
@@ -103,7 +138,7 @@ export class UserComponent implements OnInit{
     if(this.buttonFormationTitle === 'Ajouter une formation') {
       this.AjouterFormation();
     }else {
-
+      this.UpdateFormation();
     }
   }
 
@@ -133,6 +168,24 @@ export class UserComponent implements OnInit{
       error: (error: any) => {
         console.log(error);
         this.notificationService.onError("An error occurred while updating education info");
+        this.refreshing = false;
+      },
+      complete: () => {
+        console.log('Complete');
+      }
+    })
+  }
+
+  addCompetence() {
+    this.refreshing = true;
+    this.competenceService.saveCompetence(this.competenceForm?.value, this.currentUser.id).subscribe({
+      next: (response: any) => {
+        this.notificationService.onSuccess("Skill added successfully");
+        this.refreshing = false;
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.notificationService.onError("An error occurred while adding skill");
         this.refreshing = false;
       },
       complete: () => {
