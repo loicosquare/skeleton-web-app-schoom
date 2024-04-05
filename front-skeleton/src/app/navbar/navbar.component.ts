@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit{
 
   constructor() {
     this.links.push({ name: "Profil", href: "/profile" })
-    this.links.push({ name: "Filières", href: "filieres" })
+    this.links.push({ name: "Mon CV", href: "/cv-public" })
   }
 
   ngOnInit(): void {
