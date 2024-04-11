@@ -4,6 +4,7 @@ import com.takima.backskeleton.DAO.ExperienceDao;
 import com.takima.backskeleton.DAO.UtilisateurDao;
 import com.takima.backskeleton.models.Experience;
 import com.takima.backskeleton.models.Utilisateur;
+import com.takima.backskeleton.utils.ExperienceRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +18,19 @@ public class ExperienceService {
     private final UtilisateurDao utilisateurDao;
     
 
-    public void saveExperience(Long idUtilisateur, String titre, String entreprise, String lieu, String description, LocalDate dateDebut, LocalDate dateFin) { //On pouvait aussi créer un objet experienceRequest pour éviter de passer autant de paramètres
+    public void saveExperience(Long idUtilisateur, ExperienceRequest experienceRequest) {
         // Rechercher l'utilisateur
         Utilisateur utilisateur = utilisateurDao.findById(idUtilisateur)
                 .orElseThrow(() -> new IllegalArgumentException("Utilisateur non trouvé avec l'ID : " + idUtilisateur));
 
         // Créer une nouvelle expérience
         Experience nouvelleExperience = new Experience();
-        nouvelleExperience.setTitre(titre);
-        nouvelleExperience.setEntreprise(entreprise);
-        nouvelleExperience.setLieu(lieu);
-        nouvelleExperience.setDescription(description);
-        nouvelleExperience.setDateDebut(dateDebut);
-        nouvelleExperience.setDateFin(dateFin);
+        nouvelleExperience.setTitre(experienceRequest.getTitre());
+        nouvelleExperience.setEntreprise(experienceRequest.getEntreprise());
+        nouvelleExperience.setLieu(experienceRequest.getLieu());
+        nouvelleExperience.setDescription(experienceRequest.getDescription());
+        nouvelleExperience.setDateDebut(experienceRequest.getDateDebut());
+        nouvelleExperience.setDateFin(experienceRequest.getDateFin());
 
         // Définir l'utilisateur pour l'expérience
         nouvelleExperience.setUtilisateur(utilisateur);

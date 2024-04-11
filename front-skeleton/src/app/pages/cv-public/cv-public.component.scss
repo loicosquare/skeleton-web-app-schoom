@@ -280,3 +280,16 @@
 .cardDeGacuhe {
   background: linear-gradient(to right, #4a0a67, #d50000);
 }
+
+#startExportCV {
+  background-color: #4a0a67;
+  transition: background-color 0.3s ease;
+}
+
+#startExportCV:hover {
+  background: linear-gradient(to right, #4a0a67, #d50000);
+}
+
+h3.text-white {
+  background: linear-gradient(to right, #4a0a67, #d50000);
+}

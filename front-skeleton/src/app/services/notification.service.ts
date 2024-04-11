@@ -23,8 +23,9 @@ export class NotificationService {
     this.toast.warning(message, Title.WARNING, this.options);
   }
 
-  onError(message: string): void {
-    this.toast.error(message, Title.ERROR, this.options);
+  onError(message: string, titre?: string): void {
+    const titleToUse = titre && titre.trim() !== '' ? titre : Title.ERROR;
+    this.toast.error(message, titleToUse, this.options);
   }
 
 }

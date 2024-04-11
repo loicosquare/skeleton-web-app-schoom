@@ -1,97 +1,3 @@
-<!--<div class="row mt-4" style="padding: 20px;">-->
-<!--  <div class="col-md-4">-->
-<!--    <div class="card">-->
-<!--      <div class="card-body">-->
-<!--        <h5 class="card-title">Special title treatment</h5>-->
-<!--        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--        <a href="#" class="btn btn-primary">Go somewhere</a>-->
-<!--        <div class="social-links mt-3">-->
-<!--          &lt;!&ndash; Liens vers les réseaux sociaux avec les icônes Font Awesome &ndash;&gt;-->
-<!--          <a href="lien_vers_linkedin" class="me-2"><i class="fab fa-linkedin fa-2x ml-3"></i></a>-->
-<!--          <a href="lien_vers_github" class="me-2"><i class="fab fa-github fa-2x"></i></a>-->
-<!--          <a href="lien_vers_twitter" class="me-2"><i class="fab fa-twitter fa-2x"></i></a>-->
-<!--          <a href="lien_vers_instagram" class="me-2"><i class="fab fa-instagram fa-2x"></i></a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div class="col-md-8">-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-3">-->
-<!--        <div class="card mb-3">-->
-<!--          <div class="card-body">-->
-<!--            <h3 class="card-title">Ma recherche</h3>-->
-<!--            <p class="card-text">Je reçois des offres personnalisées</p>-->
-<!--            <p class="card-text">Je suis visible auprès des recruteurs</p>-->
-<!--            <p class="card-text">Je reçois des opportunités de recruteurs</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-3">-->
-<!--        <div class="card mb-3">-->
-<!--          <div class="card-body">-->
-<!--            <h3 class="card-title">Ma situation actuelle</h3>-->
-<!--            <p class="card-text">Statut : En poste</p>-->
-<!--            <p class="card-text">Poste actuel : Développeur frontend</p>-->
-<!--            <p class="card-text">Lieu de résidence : Villeurbanne (69)</p>-->
-<!--            <p class="card-text">Mis à jour : il y a plus de 21 mois</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-3">-->
-<!--        <div class="card mb-3">-->
-<!--          <div class="card-body">-->
-<!--            <h3 class="card-title">Mes CV</h3>-->
-<!--            <p class="card-text">CV visible auprès des recruteurs</p>-->
-<!--            <p class="card-text">CV vu par 0 recruteur</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-3">-->
-<!--        <div class="card mb-3">-->
-<!--          <div class="card-body">-->
-<!--            <h3 class="card-title">Mes informations personnelles</h3>-->
-<!--            <p class="card-text">Nom: TEMENA LOIC</p>-->
-<!--            <p class="card-text">Email: [votre email]</p>-->
-<!--            <p class="card-text">Téléphone: [votre téléphone]</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <form class="mt-2" #profileForm="ngForm" (ngSubmit)="saveUser(profileForm)">-->
-<!--      <div class="form-group">-->
-<!--        <label for="nom">Nom</label>-->
-<!--        <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="Entrez votre nom" required>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="prenom">Prénom</label>-->
-<!--        <input type="text" class="form-control" ngModel name="prenom" id="prenom" placeholder="Entrez votre prénom" required>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="email">Email</label>-->
-<!--        <input type="email" class="form-control" ngModel name="email" id="email" placeholder="Entrez votre email" required>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="password">Créer votre mot de passe</label>-->
-<!--        <input type="password" class="form-control" ngModel name="password" id="password" placeholder="Entrez votre mot de passe" required>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="telephone">Téléphone (optionnel)</label>-->
-<!--        <input type="text" class="form-control" ngModel name="telephone" id="telephone" placeholder="Entrez votre numéro de téléphone">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="pays">Pays de résidence</label>-->
-<!--        <input type="text" class="form-control" ngModel name="pays" id="pays" placeholder="Saisissez votre pays" required>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="ville">Ville de résidence</label>-->
-<!--        <input type="text" class="form-control" ngModel name="ville" id="ville" placeholder="Saisissez votre ville" required>-->
-<!--      </div>-->
-<!--      <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Soumettre</button>-->
-<!--    </form>-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="container mt-4">
   <div class="row">
     <div class="col-lg-12">
@@ -116,49 +22,49 @@
               <div class="col-md-4">
                 <div class="form-group app-label">
                   <label for="username" class="text-muted">Username</label>
-                  <input id="username" type="text" class="form-control resume" value="{{currentUser?.username}}" formControlName="username" placeholder="">
+                  <input id="username" type="text" class="form-control resume" [value]="currentUser.username" formControlName="username" placeholder="">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group app-label">
                   <label for="name" class="text-muted">Name</label>
-                  <input id="name" type="text" class="form-control resume" formControlName="name" value="{{currentUser?.password}}" placeholder="">
+                  <input id="name" type="text" class="form-control resume" formControlName="name" [value]="currentUser.password" placeholder="">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group app-label">
                   <label for="pays" class="text-muted">Pays</label>
-                  <input id="pays" type="text" class="form-control resume" formControlName="pays" value="{{currentUser?.pays}}" placeholder="">
+                  <input id="pays" type="text" class="form-control resume" formControlName="pays" [value]="currentUser.pays" placeholder="">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group app-label">
                   <label for="email" class="text-muted">Email</label>
-                  <input id="email" type="text" class="form-control resume" formControlName="email" value="{{currentUser?.email}}" placeholder="">
+                  <input id="email" type="text" class="form-control resume" formControlName="email" [value]="currentUser.email" placeholder="">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group app-label">
                   <label for="password" class="text-muted">Password</label>
-                  <input id="password" type="password" readonly class="form-control resume" formControlName="password" value="{{currentUser?.password}}" placeholder="" style="cursor: not-allowed">
+                  <input id="password" type="password" readonly class="form-control resume" formControlName="password" [value]="currentUser.password" placeholder="" style="cursor: not-allowed">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group app-label">
                   <label for="telephone" class="text-muted">Téléphone</label>
-                  <input id="telephone" type="number" class="form-control resume" formControlName="telephone" value="{{currentUser?.telephone}}" placeholder="">
+                  <input id="telephone" type="number" class="form-control resume" formControlName="telephone" [value]="currentUser?.telephone" placeholder="">
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group app-label">
                   <label for="ville" class="text-muted">Ville</label>
-                  <input id="ville" type="text" class="form-control resume" formControlName="ville" value="{{currentUser?.ville}}" placeholder="">
+                  <input id="ville" type="text" class="form-control resume" formControlName="ville" [value]="currentUser?.ville" placeholder="">
                 </div>
               </div>
             </div>
@@ -177,176 +83,15 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <h3 class="text-white mt-5">Contact Information</h3>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="job-detail mt-2 p-4">
-        <div class="custom-form">
-          <form>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group app-label">
-                  <label for="citys" class="text-muted">City</label>
-                  <div class="form-button">
-                    <select class="nice-select">
-                      <option data-display="City">City</option>
-                      <option value="1">Abilene</option>
-                      <option value="2">Babbitt</option>
-                      <option value="3">Cape Coral</option>
-                      <option value="4">Dallas</option>
-                      <option value="5">Eloy</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group app-label">
-                  <label for="state" class="text-muted">State</label>
-                  <div class="form-button">
-                    <select class="nice-select">
-                      <option data-display="State">State</option>
-                      <option value="1">Alabama</option>
-                      <option value="3">Hawaii</option>
-                      <option value="4">Maine</option>
-                      <option value="5">Oregon</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group app-label">
-                  <label for="country" class="text-muted">Country</label>
-                  <div class="form-button">
-                    <select class="nice-select">
-                      <option data-display="Country">Country</option>
-                      <option value="1">Alabama</option>
-                      <option value="2">Delaware</option>
-                      <option value="3">Iowa</option>
-                      <option value="4">Missouri</option>
-                      <option value="5">New York</option>
-                      <option value="6">Utah</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group app-label">
-                  <label for="phone" class="text-muted">Phone</label>
-                  <input id="phone" type="text" class="form-control resume" placeholder="">
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group app-label">
-                  <label for="e-mail" class="text-muted">E-mail</label>
-                  <input id="e-mail" type="text" class="form-control resume" placeholder="">
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group app-label">
-                  <label for="website" class="text-muted">Website</label>
-                  <input id="website" type="text" class="form-control resume" placeholder="">
-                </div>
-              </div>
-
-              <div class="col-lg-12">
-                <div class="form-group app-label">
-                  <label for="address">Address</label>
-                  <textarea id="address" rows="4" class="form-control resume" placeholder=""></textarea>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
       <h3 class="text-white mt-5">Education Details</h3>
     </div>
   </div>
 
-  <div class="row" *ngFor="let formation of currentFormation; let i = index">
-      <h2>formation - {{formation.id}}</h2>
-      <div class="col-lg-12">
-        <div class="job-detail mt-2 p-4">
-          <div class="custom-form">
-            <form [formGroup]="formationForm">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group app-label">
-                    <label for="date-debut-{{formation.id}}" class="text-muted">Date debut</label>
-                    <input id="date-debut-{{formation.id}}" type="date" class="form-control" formControlName="anneeDebut" value="{{formation.anneeDebut}}" placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group app-label">
-                    <label for="date-fin-{{formation.id}}" class="text-muted">Date fin</label>
-                    <input id="date-fin-{{formation.id}}" type="date" class="form-control" formControlName="anneeFin" value="{{formation.anneeFin}}" placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group app-label">
-                    <label for="ecole-{{formation.id}}" class="text-muted">Ecole</label>
-                    <input id="ecole-{{formation.id}}" type="text" class="form-control" formControlName="ecole" value="{{formation.ecole}}" placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-lg-6">
-                  <div class="form-group app-label">
-                    <label for="diplome-{{formation.id}}" class="text-muted">Degree/Certification/Diplome</label>
-                    <input id="diplome-{{formation.id}}" type="text" class="form-control resume" formControlName="diplome" value="{{formation.diplome}}" placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-lg-6">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group app-label">
-                        <label for="lieu-{{formation.id}}" class="text-muted">Lieu</label>
-                        <input id="lieu-{{formation.id}}" type="text" class="form-control" formControlName="lieu" value="{{formation.lieu}}" placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group app-label">
-                        <label for="domaineEtudes-{{formation.id}}" class="text-muted">Domaine d'étude</label>
-                        <input id="domaineEtudes-{{formation.id}}" type="text" class="form-control resume" formControlName="domaineEtudes" value="{{formation.domaineEtudes}}" placeholder="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="text-center d-flex justify-content-center">
-                    <button class="btn btn-outline-info">Modifier<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
-                    <button class="btn btn-outline-danger ml-2">Supprimer<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <div class="row" *ngIf="!currentFormation || false">
+  <div class="row">
     <div class="col-lg-12">
       <div class="job-detail mt-2 p-4">
         <div class="custom-form">
-          <form [formGroup]="formationForm">
+          <form [formGroup]="formationForm" (ngSubmit)="ajouterFormation()">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group app-label">
@@ -391,13 +136,19 @@
                       <input id="domaineEtudes" type="text" class="form-control resume" formControlName="domaineEtudes" placeholder="">
                     </div>
                   </div>
-
-<!--                  <div class="col-md-6" style="display: none">
+                  <div class="col-md-6" style="display: none">
                     <div class="form-group app-label">
                       <label for="id" class="text-muted">id</label>
                       <input id="id" type="text" class="form-control resume" formControlName="id" placeholder="">
                     </div>
-                  </div>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center d-flex justify-content-center">
+                  <button type="submit" class="btn btn-outline-success" [disabled]="!formationForm.valid">Ajouter une formation<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
                 </div>
               </div>
             </div>
@@ -407,10 +158,98 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="text-center d-flex justify-content-center">
-        <button type="submit" [ngClass]="buttonFormationTitle == 'Ajouter une formation' ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'" (click)="updateOrAddFormation()">{{buttonFormationTitle}}<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item" *ngFor="let formation of currentFormation; let i = index">
+      <h2 class="accordion-header" [id]="'heading' + i">
+        <button class="accordion-button collapsed" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i" (click)="getSelectedFormation(formation)">
+          formation {{i+1}} : {{formation.diplome}} - {{formation.domaineEtudes}}
+        </button>
+      </h2>
+      <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i">
+        <div class="accordion-body">
+          <strong>{{formation.ecole}} - {{formation.anneeDebut | date}} - {{formation.anneeFin | date}}</strong>
+          <button class="btn btn-xs btn-outline-primary float-end justify-content-center" style="margin-top: -15px;" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal(formation, formationForm)" title="Cliquez pour voir les détails de la formation."><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Formation-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="selectedFormation && true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><strong>Formation {{selectedFormation.id}} : {{selectedFormation.diplome}} - {{selectedFormation.domaineEtudes}}</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="col-lg-12">
+            <div class="job-detail mt-2 p-4">
+              <div class="custom-form">
+                <form [formGroup]="formationForm">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group app-label">
+                        <label  class="text-muted">Date debut</label>
+                        <input type="date" class="form-control" formControlName="anneeDebut" >
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group app-label">
+                        <label for="date-fin-{{selectedFormation.id}}" class="text-muted">Date fin</label>
+                        <input id="date-fin-{{selectedFormation.id}}" type="date" class="form-control" formControlName="anneeFin">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group app-label">
+                        <label for="ecole-{{selectedFormation.id}}" class="text-muted">Ecole</label>
+                        <input id="ecole-{{selectedFormation.id}}" type="text" class="form-control" formControlName="ecole">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="form-group app-label">
+                        <label for="diplome-{{selectedFormation.id}}" class="text-muted">Degree/Certification/Diplome</label>
+                        <input id="diplome-{{selectedFormation.id}}" type="text" class="form-control resume" formControlName="diplome">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group app-label">
+                            <label for="lieu-{{selectedFormation.id}}" class="text-muted">Lieu</label>
+                            <input id="lieu-{{selectedFormation.id}}" type="text" class="form-control" formControlName="lieu">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group app-label">
+                            <label for="domaineEtudes-{{selectedFormation.id}}" class="text-muted">Domaine d'étude</label>
+                            <input id="domaineEtudes-{{selectedFormation.id}}" type="text" class="form-control resume" formControlName="domaineEtudes">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group app-label" style="display: none;">
+                            <label for="{{selectedFormation.id}}" class="text-muted">id</label>
+                            <input id="{{selectedFormation.id}}" type="text" class="form-control resume" formControlName="id">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-xs btn-outline-danger" data-bs-dismiss="modal"(click)="deleteFormation(selectedFormation.id)">Supprimer <i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+          <button type="button" class="btn btn-xs btn-outline-info" (click)="updateFormation()">Modifier <i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+        </div>
       </div>
     </div>
   </div>
@@ -425,35 +264,26 @@
     <div class="col-lg-12">
       <div class="job-detail mt-2 p-4">
         <div class="custom-form">
-          <form>
+          <form [formGroup]="experienceForm" (ngSubmit)="ajouterExperience()">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group app-label">
                   <label for="company-name" class="text-muted">Company Name</label>
-                  <input id="company-name" type="text" class="form-control resume" placeholder="">
+                  <input id="company-name" type="text" class="form-control resume" formControlName="entreprise" placeholder="Quelle entreprise">
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group app-label">
                   <label for="job-position" class="text-muted">Job Position</label>
-                  <input id="job-position" type="text" class="form-control resume" placeholder="">
+                  <input id="job-position" type="text" class="form-control resume" formControlName="titre" placeholder="Quel role ?">
                 </div>
               </div>
 
               <div class="col-lg-6">
                 <div class="form-group app-label">
-                  <label for="location" class="text-muted">Location</label>
-                  <div class="form-button">
-                    <select class="nice-select">
-                      <option data-display="Search">Search</option>
-                      <option value="1">New York</option>
-                      <option value="2">Los Angeles</option>
-                      <option value="3">Chicago</option>
-                      <option value="4">Houston</option>
-                      <option value="5">Indiana</option>
-                    </select>
-                  </div>
+                  <label for="lieuu" class="text-muted">Lieu</label>
+                  <input id="lieuu" type="text" class="form-control resume" formControlName="lieu" placeholder="Lieu">
                 </div>
               </div>
 
@@ -461,15 +291,15 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group app-label">
-                      <label for="date-from" class="text-muted">Date From</label>
-                      <input id="date-from" type="text" class="form-control resume" placeholder="01-Jan-2018">
+                      <label for="date-from" class="text-muted">Date début</label>
+                      <input id="date-from" type="date" class="form-control resume" formControlName="dateDebut" placeholder="Entrez la date">
                     </div>
                   </div>
 
                   <div class="col-md-6">
                     <div class="form-group app-label">
-                      <label for="date-to" class="text-muted">Date To</label>
-                      <input id="date-to" type="text" class="form-control resume" placeholder="31-March-2019">
+                      <label for="date-to" class="text-muted">Date fin</label>
+                      <input id="date-to" type="date" class="form-control resume" formControlName="dateFin" placeholder="Entrez la date">
                     </div>
                   </div>
                 </div>
@@ -477,8 +307,22 @@
 
               <div class="col-lg-12">
                 <div class="form-group app-label">
-                  <label for="addition-information-1">Addition Information</label>
-                  <textarea id="addition-information-1" rows="4" class="form-control resume" placeholder=""></textarea>
+                  <label for="addition-information-1">Description</label>
+                  <textarea id="addition-information-1" rows="4" class="form-control resume" formControlName="description" placeholder="Décrivez"></textarea>
+                </div>
+              </div>
+
+              <div class="col-lg-12" style="display: none">
+                <div class="form-group app-label">
+                  <label for="idd">id</label>
+                  <textarea id="idd" rows="4" class="form-control resume" formControlName="id"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center d-flex justify-content-center">
+                  <button type="submit" class="btn btn-outline-success" [disabled]="!experienceForm.valid">Ajouter une Exp <i class="fas fa-spinner fa-spin" id="spinAjouterFormExp" *ngIf="refreshing"></i></button>
                 </div>
               </div>
             </div>
@@ -487,10 +331,99 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="text-center d-flex justify-content-center">
-        <button type="submit" class="buttonGenerique">Enregister Exp</button>
+
+  <div class="accordion" id="accordionPanelExperience">
+    <div class="accordion-item" *ngFor="let experience of currentExperience; let i = index">
+      <h2 class="accordion-header" [id]="'heading' + i">
+        <button class="accordion-button collapsed" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i" (click)="getSelectedExperience(experience)">
+          Experience {{i+1}} : {{experience.titre}}
+        </button>
+      </h2>
+      <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i">
+        <div class="accordion-body">
+          <strong>{{experience.titre}} - {{experience.lieu}}</strong>
+          <button class="btn btn-xs btn-outline-primary float-end justify-content-center" style="margin-top: -15px;" data-bs-toggle="modal" data-bs-target="#exampleModalExpe" (click)="openModal(experience, experienceForm)" title="Cliquez pour voir les détails de l'experience."><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Experience -->
+  <div class="modal fade" id="exampleModalExpe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="selectedExperience && true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelExpe">Experience : {{selectedExperience.titre}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="col-lg-12">
+            <div class="job-detail mt-2 p-4">
+              <div class="custom-form">
+                <form [formGroup]="experienceForm" (ngSubmit)="updateExperience()">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group app-label">
+                        <label for="company-name1" class="text-muted">Company Name</label>
+                        <input id="company-name1" type="text" class="form-control resume" formControlName="entreprise">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group app-label">
+                        <label for="job-position1" class="text-muted">Job Position</label>
+                        <input id="job-position1" type="text" class="form-control resume" formControlName="titre">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="form-group app-label">
+                        <label for="lieuu1" class="text-muted">Lieu</label>
+                        <input id="lieuu1" type="text" class="form-control resume" formControlName="lieu">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group app-label">
+                            <label for="date-from1" class="text-muted">Date début</label>
+                            <input id="date-from1" type="date" class="form-control resume" formControlName="dateDebut">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group app-label">
+                            <label for="date-to1" class="text-muted">Date fin</label>
+                            <input id="date-to1" type="date" class="form-control resume" formControlName="dateFin">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                      <div class="form-group app-label">
+                        <label for="addition-information-11">Description</label>
+                        <textarea id="addition-information-11" rows="4" class="form-control resume" formControlName="description"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12" style="display: none">
+                      <div class="form-group app-label">
+                        <label for="idd1">id</label>
+                        <textarea id="idd1" rows="4" class="form-control resume" formControlName="id"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-xs btn-outline-danger" data-bs-dismiss="modal" (click)="deleteExperience(selectedExperience.id)">Supprimer <i class="fas fa-spinner fa-spin"  *ngIf="refreshing" id="spinnerUpdateExp"></i></button>
+          <button type="button" class="btn btn-xs btn-outline-info" (click)="updateExperience()" [disabled]="!experienceForm.valid">Modifier <i class="fas fa-spinner fa-spin" *ngIf="refreshing" id="spinnerRefExp"></i></button>
+        </div>
       </div>
     </div>
   </div>
@@ -523,8 +456,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="text-center d-flex justify-content-center">
-                  <button class="btn btn-outline-info">Modifier<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
-                  <button class="btn btn-outline-danger ml-2">Supprimer<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+                  <button type="submit" class="btn btn-outline-info" [disabled]="!competenceForm.valid">Ajouter une formation <i class="fas fa-spinner fa-spin" id="spinAjouterForm" *ngIf="refreshing"></i></button>
                 </div>
               </div>
             </div>
@@ -534,36 +466,203 @@
     </div>
   </div>
 
-  <div class="row" *ngFor="let competence of currentCompetence">
-    <div class="col-lg-12">
-      <div class="job-detail mt-2 p-4">
-        <div class="custom-form">
-          <form [formGroup]="competenceForm">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="form-group app-label">
-                  <label for="skills-{{competence.id}}" class="text-muted">Competence</label>
-                  <input id="skills-{{competence.id}}" type="text" class="form-control" formControlName="competence" value="competence.competence">
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="form-group app-label">
-                  <label for="skill proficiency-{{competence.id}}" class="text-muted">Niveau</label>
-                  <input id="skill proficiency-{{competence.id}}" type="num" class="form-control" formControlName="niveau" value="{{competence.niveau}}">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="text-center d-flex justify-content-center">
-                  <button class="btn btn-outline-info">Modifier<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
-                  <button class="btn btn-outline-danger ml-2">Supprimer<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
-                </div>
-              </div>
-            </div>
-          </form>
+  <div class="accordion" id="accordionPanelCompetence">
+    <div class="accordion-item" *ngFor="let competence of currentCompetence; let i = index">
+      <h2 class="accordion-header" [id]="'heading' + i">
+        <button class="accordion-button collapsed" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i" (click)="getSelectedCompetence(competence)">
+          Competence {{i+1}} : {{competence.competence}}
+        </button>
+      </h2>
+      <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i">
+        <div class="accordion-body">
+          <strong>{{competence.competence}} - {{competence.niveau}}</strong>
+          <button class="btn btn-xs btn-outline-primary float-end justify-content-center" style="margin-top: -15px;" data-bs-toggle="modal" data-bs-target="#modalCompetence" (click)="openModal(competence, competenceForm)" title="Cliquez pour voir les détails de la competence."><i class="fas fa-eye"></i></button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Modal Competence -->
+  <div class="modal fade" id="modalCompetence" tabindex="-1" aria-labelledby="ModalCompetenceLabel" aria-hidden="true" *ngIf="selectedCompetence && true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalCompetenceLabel"><strong>Competence {{selectedCompetence.id}} - {{selectedCompetence.competence}}</strong></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="col-lg-12">
+            <div class="job-detail mt-2 p-4">
+              <div class="custom-form">
+                <form [formGroup]="competenceForm">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group app-label">
+                        <label for="skills-{{selectedCompetence.id}}-list" class="text-muted">Competence</label>
+                        <input id="skills-{{selectedCompetence.id}}-list" type="text" class="form-control" formControlName="competence">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group app-label">
+                        <label for="skill proficiency-{{selectedCompetence.id}}-list" class="text-muted">Niveau</label>
+                        <input id="skill proficiency-{{selectedCompetence.id}}-list" type="number" min="0" class="form-control" formControlName="niveau">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-xs btn-outline-danger" data-bs-dismiss="modal" (click)="deleteCompetence(selectedCompetence.id)">Supprimer <i class="fas fa-spinner fa-spin"  *ngIf="refreshing" id="spinnerUpdateCompetence"></i></button>
+          <button type="button" class="btn btn-xs btn-outline-info" (click)="updateCompetence()">Modifier <i class="fas fa-spinner fa-spin" *ngIf="refreshing" id="spinnerRefreshCompetence"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="text-white mt-5">Hobbies /Social Medias</h3>
+    </div>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="Hobbies">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="job-detail mt-2 p-4">
+            <div class="custom-form">
+              <form [formGroup]="loisirForm">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group app-label">
+                      <label for="hobby" class="text-muted">Hobby</label>
+                      <input id="hobby" type="text" class="form-control resume" formControlName="hobby" placeholder="Hobby">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="text-center d-flex justify-content-center" *ngIf="!hideShowButtonUpdateDeleteLoisirForm">
+                      <button class="btn btn-outline-info" [disabled]="!loisirForm.valid" (click)="ajouterLoisir()">Ajouter un hobby <i class="fas fa-spinner fa-spin" id="spinAjouterFormHobby" *ngIf="refreshing"></i></button>
+                    </div>
+                    <div *ngIf="hideShowButtonUpdateDeleteLoisirForm" class="text-center">
+                      <div class="d-flex justify-content-center">
+                        <button class="btn btn-outline-secondary me-3" id="buttonModifierLoisir" [disabled]="!loisirForm.valid" (click)="updateLoisir()">Modifier <i class="fas fa-spinner fa-spin" id="spinModfierFormHobby" *ngIf="refreshing"></i></button>
+                        <button class="btn btn-outline-danger me-3" id="buttonSupprimerLoisir" [disabled]="!loisirForm.valid" (click)="deleteLoisir(selectedLoisir.id)">Supprimer <i class="fas fa-spinner fa-spin" id="spinSupprimerFormHobby" *ngIf="refreshing"></i></button>
+                        <button class="btn btn-outline-warning" (click)="reBack()" id="buttonReBackLoisir">Revenir <mat-icon>restore_page</mat-icon></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group app-label" style="display: none;">
+                    <label for="idHobby" class="text-muted">id</label>
+                    <input id="idHobby" type="number" class="form-control resume" formControlName="id">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion" id="accordionPanelHobby" *ngIf="currentLoisir && true">
+        <div class="accordion-item" *ngFor="let hobby of currentLoisir; let i = index">
+          <h2 class="accordion-header" [id]="'heading' + i">
+            <button class="accordion-button collapsed" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+              Hobby {{i+1}} : {{hobby.hobby}}
+            </button>
+          </h2>
+          <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i">
+            <div class="accordion-body">
+              <strong>{{hobby.hobby}}</strong>
+              <button class="btn btn-xs btn-outline-primary float-end justify-content-center" style="margin-top: -15px;" (click)="getSelectedLoisir(hobby)" title="Cliquez pour voir les détails du hobby."><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Social Medias">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="job-detail
+          mt-2 p-4">
+            <div class="custom-form">
+              <form [formGroup]="socialMediaForm">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group app-label">
+                      <label for="social-media" class="text-muted">Lien du Social Media</label>
+                      <input id="social-media" type="text" class="form-control resume" formControlName="type" placeholder="Social Media">
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group app-label">
+                      <label for="social-media-select" class="text-muted">Réseau social</label>
+                      <select id="social-media-select" class="form-control nice-select" formControlName="lien">
+                        <option value="">Selectionez une valeur</option>
+                        <ng-container *ngFor="let option of socialMediaOptions">
+                          <option [value]="option" [selected]="selectedSocialMedia && isEqual(option)">{{ option }}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group app-label" style="display: none;">
+                      <label for="idSoMe" class="text-muted">id</label>
+                      <input id="idSoMe" type="text" class="form-control resume" formControlName="id">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="text-center d-flex justify-content-center" *ngIf="!hideShowButtonUpdateDeleteSocialMediaForm">
+                      <button class="btn btn-outline-info" [disabled]="!socialMediaForm.valid" (click)="ajouterSocialMedia()">Ajouter un social media <i class="fas fa-spinner fa-spin" id="spinAjouterFormSocialMedia" *ngIf="refreshing"></i></button>
+                    </div>
+                    <div *ngIf="hideShowButtonUpdateDeleteSocialMediaForm" class="text-center">
+                      <div class="d-flex justify-content-center">
+                        <button class="btn btn-outline-secondary me-3" id="buttonModifierSoMe" [disabled]="!socialMediaForm.valid" (click)="updateSocialMedia()">Modifier <i class="fas fa-spinner fa-spin" id="spinModfierFormSoMe" *ngIf="refreshing"></i></button>
+                        <button class="btn btn-outline-danger me-3" id="buttonSupprimerSoMe" [disabled]="!socialMediaForm.valid" (click)="deleteSocialMedia(selectedSocialMedia.id)">Supprimer <i class="fas fa-spinner fa-spin" id="spinSupprimerFormSoMe" *ngIf="refreshing"></i></button>
+                        <button class="btn btn-outline-warning" (click)="reBackSocialMedia()" id="buttonReBackSoMe">Revenir <mat-icon>restore_page</mat-icon></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion" id="accordionPanelSocialMedia" *ngIf="currentSocialMedias && true">
+        <div class="accordion-item" *ngFor="let socialMedia of currentSocialMedias; let i = index">
+          <h2 class="accordion-header" [id]="'heading' + i">
+            <button class="accordion-button collapsed" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+              Social Media {{i+1}} : {{socialMedia.type}}
+            </button>
+          </h2>
+          <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i">
+            <div class="accordion-body">
+              <strong>
+                {{socialMedia.type}} - {{socialMedia.lien}}
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'Facebook'" class="fas fa-facebook" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'WhatsApp'" class="fas fa-whatsapp" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'Instagram'" class="fab fa-instagram" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'Facebook Messenger'" class="fab fa-facebook-messenger" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'Snapchat'" class="fab fa-snapchat" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'TikTok'" class="fab fa-tiktok" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'Twitter'" class="fab fa-twitter" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'Pinterest'" class="fab fa-pinterest" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'iMessage'" class="fab fa-imessage" title="Cliquez pour acceder au réseau"></i></a>
+                <a href="{{socialMedia.lien}}"><i *ngIf="socialMedia.type === 'LinkedIn'" class="fab fa-linkedin" title="Cliquez pour acceder au réseau"></i></a>
+              </strong>
+              <button class="btn btn-xs btn-outline-primary float-end justify-content-center" style="margin-top: -15px;" title="Cliquez pour voir les détails du social media." (click)="getSelectedSocialMedia(socialMedia)">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>

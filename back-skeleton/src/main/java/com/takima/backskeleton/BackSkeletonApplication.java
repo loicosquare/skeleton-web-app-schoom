@@ -7,9 +7,11 @@ import org.springframework.context.annotation.Bean;
 import com.takima.backskeleton.DAO.UtilisateurDao;
 import com.takima.backskeleton.models.Utilisateur;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @RequiredArgsConstructor
 @SpringBootApplication
+@EnableAsync
 public class BackSkeletonApplication {
 
 	private final UtilisateurDao utilisateurDao;
@@ -19,6 +21,15 @@ public class BackSkeletonApplication {
 
 	@Bean
 	public void initUserData() {
+		Utilisateur userOnDataBase = utilisateurDao.findByUsername("admin");
+		if (userOnDataBase == null) {
+			initAdmin();
+		}else {
+			System.out.println("Admin already exists");
+		}
+	}
+
+	private void initAdmin() {
 		Utilisateur utilisateur =  Utilisateur.builder()
 				.id(1L)
 				.username("admin")

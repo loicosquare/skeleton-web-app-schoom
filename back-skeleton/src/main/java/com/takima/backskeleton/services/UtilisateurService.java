@@ -4,6 +4,7 @@ import com.takima.backskeleton.DAO.*;
 import com.takima.backskeleton.models.*;
 import com.takima.backskeleton.utils.LoginRequest;
 import com.takima.backskeleton.utils.UtilisateurRequest;
+import jakarta.mail.MessagingException;
 import jdk.jshell.execution.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class UtilisateurService {
     private final FormationDao formationDao;
     private final LoisirDao loisirDao;
     private final SocialMediaDao socialMediaDao;
+    private final EmailService emailService;
 
     public Utilisateur saveUser(Utilisateur utilisateur) {
         return utilisateurDao.save(utilisateur);
@@ -65,18 +67,32 @@ public class UtilisateurService {
             throw new RuntimeException("User not found");
         }
 
-        List<Competence> UserCompetence = competenceDao.findAllByUtilisateurId(existingUser.getId());
-        List<Experience> UserExperience = experienceDao.findAllByUtilisateurId(existingUser.getId());
-        List<Formation> UserFormation = formationDao.findAllByUtilisateurId(existingUser.getId());
-        List<Loisir> UserLoisir = loisirDao.findAllByUtilisateurId(existingUser.getId());
-        List<SocialMedia> UserSocialMedia = socialMediaDao.findAllByUtilisateurId(existingUser.getId());
-        existingUser.setCompetences(UserCompetence);
-        existingUser.setExperiences(UserExperience);
-        existingUser.setFormations(UserFormation);
-        existingUser.setLoisirs(UserLoisir);
-        existingUser.setSocialMedias(UserSocialMedia);
+        List<Competence> userCompetence = competenceDao.findAllByUtilisateurId(existingUser.getId());
+        List<Experience> userExperience = experienceDao.findAllByUtilisateurId(existingUser.getId());
+        List<Formation> userFormation = formationDao.findAllByUtilisateurId(existingUser.getId());
+        List<Loisir> userLoisir = loisirDao.findAllByUtilisateurId(existingUser.getId());
+        List<SocialMedia> userSocialMedia = socialMediaDao.findAllByUtilisateurId(existingUser.getId());
+        existingUser.setCompetences(userCompetence);
+        existingUser.setExperiences(userExperience);
+        existingUser.setFormations(userFormation);
+        existingUser.setLoisirs(userLoisir);
+        existingUser.setSocialMedias(userSocialMedia);
+        sendEmail(existingUser);
+        return existingUser;
+    }
 
-        return utilisateurDao.findByEmailAndPassword(loginRequest.email, loginRequest.password);
+    public void sendEmail(Utilisateur utilisateur) {
+        // Send the confirmation email
+        try {
+            emailService.send(
+                    utilisateur.getEmail(),
+                    utilisateur.getUsername()   + " " + utilisateur.getName() + " " +
+                    null,
+                    String.format("PERTE U", "yoooo")
+            );
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 }
 

@@ -15,7 +15,8 @@ export class LoisirService {
 
   saveLoisir(userId: number, hobby: string): Observable<Loisir> {
     const params = { userId, hobby };
-    return this.http.post<Loisir>(`${this.baseUrl}/add`, params)
+    const urlWithQueryParams = `${this.baseUrl}/add?userId=${userId}&hobby=${hobby}`;
+    return this.http.post<Loisir>(urlWithQueryParams, params)
       .pipe(
         tap(console.log),
         catchError(this.handleError)

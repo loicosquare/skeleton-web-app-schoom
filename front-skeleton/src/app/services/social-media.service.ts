@@ -9,7 +9,7 @@ import { SocialMediaRequest } from "../models/utils/social-mediaRequest.model"
   providedIn: 'root'
 })
 export class SocialMediaService {
-  private baseUrl = 'http://localhost:8081/social-media';
+  private baseUrl = 'http://localhost:8081/socials-medias';
 
   constructor(private http: HttpClient) { }
 

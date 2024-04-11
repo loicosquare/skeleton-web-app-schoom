@@ -1,5 +1,10 @@
 <div class="row col-md-12 mt-4">
-  <div class="col-md-4 d-flex"></div>
+  <div class="col-md-4 d-flex">
+    <div class="card-body">
+      <button class="btn btn-primary me-3" (click)="exportToJson()" id="startExportCV">Exporter JSON</button>
+      <button class="btn btn-primary" (click)="contactMe()" id="startExportCV">Me contacter</button>
+    </div>
+  </div>
   <div class="header col-md-4" style="background-color: #4a0a67;">
     <h1>Choisir un thème</h1>
     <select class="form-select form-select-sm form-control" formControlName="theme" (change)="onThemeChange($event)">
@@ -12,7 +17,7 @@
 <div *ngIf="choosedTheme == 1">
   <div class="section">
     <h2>Formations</h2>
-    @for (formation of formations; track formation) {
+    @for (formation of currentFormation; track formation) {
       <hr>
       <div class="">
         <h3>{{ formation.diplome }}</h3>
@@ -25,7 +30,7 @@
   <div class="section">
     <h2>Compétences</h2>
     <div class="tags">
-      @for(competence of competences; track competence) {
+      @for(competence of currentCompetence; track competence) {
         <hr>
         <span>{{ competence.competence }}</span>
         <span>{{ competence.niveau }}</span>
@@ -36,7 +41,7 @@
 
   <div class="section">
     <h2>Loisirs</h2>
-    @for(loisir of loisirs; track loisir) {
+    @for(loisir of currentLoisir; track loisir) {
       <hr>
       <div class="">
         <p>{{ loisir.hobby }}</p>
@@ -46,7 +51,7 @@
 
   <div class="section">
     <h2>Expériences</h2>
-    @for(experience of experiences; track experience) {
+    @for(experience of currentExperience; track experience) {
       <hr>
       <div class="">
         <h3>{{ experience.titre }}</h3>
@@ -105,26 +110,26 @@
               <h5 class="text-white">Professional Skill:</h5>
               <div class="progress bg-dark">
                 <div class="progress-bar bg-white" role="progressbar" style="width:55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar-title text-white">Photoshop</div>
-                  <span class="progress-bar-number text-white">70%</span>
+                  <div class="progress-bar-title text-white">{{currentCompetence[0]?.competence}}</div>
+                  <span class="progress-bar-number text-white">{{currentCompetence[0]?.niveau}}%</span>
                 </div>
               </div>
               <div class="progress bg-dark">
                 <div class="progress-bar bg-white" role="progressbar" style="width:80%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar-title text-white">JavaScript</div>
-                  <span class="progress-bar-number text-white">80%</span>
+                  <div class="progress-bar-title text-white">{{currentCompetence[1]?.competence}}</div>
+                  <span class="progress-bar-number text-white">{{currentCompetence[1]?.niveau}}%</span>
                 </div>
               </div>
               <div class="progress bg-dark">
                 <div class="progress-bar bg-white" role="progressbar" style="width:55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar-title text-white">HTML/CSS</div>
-                  <span class="progress-bar-number text-white">55%</span>
+                  <div class="progress-bar-title text-white">{{currentCompetence[2]?.competence}}</div>
+                  <span class="progress-bar-number text-white">{{currentCompetence[2]?.niveau}}%</span>
                 </div>
               </div>
               <div class="progress bg-dark mb-md-0">
                 <div class="progress-bar bg-white" role="progressbar" style="width:60%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar-title text-white">PHP</div>
-                  <span class="progress-bar-number text-white">60%</span>
+                  <div class="progress-bar-title text-white">{{currentCompetence[3]?.competence}}</div>
+                  <span class="progress-bar-number text-white">{{currentCompetence[3]?.niveau}}%</span>
                 </div>
               </div>
             </div>
@@ -134,30 +139,16 @@
           <div class="resume-experience">
             <div class="timeline-box">
               <h5 class="resume-experience-title">Education:</h5>
-              <div class="jobster-candidate-timeline">
+              <div class="jobster-candidate-timeline" *ngFor="let formation of currentFormation; let i = index">
                 <div class="jobster-timeline-item">
                   <div class="jobster-timeline-cricle">
                     <i class="far fa-circle"></i>
                   </div>
                   <div class="jobster-timeline-info">
                     <div class="dashboard-timeline-info">
-                      <span class="jobster-timeline-time">2014 - 2018</span>
-                      <h6 class="mb-2">Diploma in Graphics Design</h6>
-                      <span>- Graphic Arts Institute</span>
-                      <p class="mt-2">Have some fun and hypnotize yourself to be your very own “Ghost of Christmas future” and see what the future holds for you.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="jobster-timeline-item mb-0">
-                  <div class="jobster-timeline-cricle">
-                    <i class="far fa-circle"></i>
-                  </div>
-                  <div class="jobster-timeline-info">
-                    <div class="dashboard-timeline-info">
-                      <span class="jobster-timeline-time">2018 - Pres</span>
-                      <h6 class="mb-2">Masters in Software Engineering</h6>
-                      <span>- Engineering University</span>
-                      <p class="mt-2">This is the beginning of creating the life that you want to live. Know what the future holds for you as a result of the choice you can make today.</p>
+                      <span class="jobster-timeline-time">{{ formation.anneeDebut }} to {{ formation.anneeFin }} - {{ formation.lieu }}</span>
+                      <h6 class="mb-2">{{ formation.diplome }} - {{ formation.domaineEtudes }}</h6>
+                      <span>- {{ formation.ecole }}</span>
                     </div>
                   </div>
                 </div>
@@ -165,61 +156,17 @@
             </div>
             <div class="timeline-box mt-4">
               <h5 class="resume-experience-title">Work &amp; Experience:</h5>
-              <div class="jobster-candidate-timeline">
+              <div class="jobster-candidate-timeline" *ngFor="let exp of currentExperience; let i = index;">
                 <div class="jobster-timeline-item">
                   <div class="jobster-timeline-cricle">
                     <i class="far fa-circle"></i>
                   </div>
                   <div class="jobster-timeline-info">
                     <div class="dashboard-timeline-info">
-                      <span class="jobster-timeline-time">2020-6-01 to 2020-6-01</span>
-                      <h6 class="mb-2">Web Designer</h6>
-                      <span>- Inwave Studio</span>
-                      <p class="mt-2">One of the main areas that I work on with my clients is shedding these non-supportive beliefs and replacing them with beliefs that will help them to accomplish their desires.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="jobster-timeline-item mb-0">
-                  <div class="jobster-timeline-cricle">
-                    <i class="far fa-circle"></i>
-                  </div>
-                  <div class="jobster-timeline-info">
-                    <div class="dashboard-timeline-info">
-                      <span class="jobster-timeline-time">2020-6-01 to 2020-6-01</span>
-                      <h6 class="mb-2">Secondary School Certificate</h6>
-                      <span>- Engineering High School</span>
-                      <p class="mt-2">Figure out what you want, put a plan together to achieve it, understand the cost, believe in yourself then go and get it!</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="timeline-box mt-4">
-              <h5 class="resume-experience-title">Awards:</h5>
-              <div class="jobster-candidate-timeline">
-                <div class="jobster-timeline-item">
-                  <div class="jobster-timeline-cricle">
-                    <i class="far fa-circle"></i>
-                  </div>
-                  <div class="jobster-timeline-info">
-                    <div class="dashboard-timeline-info">
-                      <span class="jobster-timeline-time">2020-6-01 to 2020-6-01</span>
-                      <h6 class="mb-2">Web Designer</h6>
-                      <span>- Inwave Studio</span>
-                      <p class="mt-2">One of the main areas that I work on with my clients is shedding these non-supportive beliefs and replacing them with beliefs that will help them to accomplish their desires.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="jobster-timeline-item mb-0">
-                  <div class="jobster-timeline-cricle">
-                    <i class="far fa-circle"></i>
-                  </div>
-                  <div class="jobster-timeline-info">
-                    <div class="dashboard-timeline-info">
-                      <span class="jobster-timeline-time">2020-6-01 to 2020-6-01</span>
-                      <h6 class="mb-2">Secondary School Certificate</h6>
-                      <span>- Engineering High School</span>
-                      <p class="mt-2">Figure out what you want, put a plan together to achieve it, understand the cost, believe in yourself then go and get it!</p>
+                      <span class="jobster-timeline-time">{{ exp.dateDebut }} to {{ exp.dateFin }} - {{exp.lieu}}</span>
+                      <h6 class="mb-2">{{exp.titre}}</h6>
+                      <!--<span>- {{exp.lieu}}</span>-->
+                      <p class="mt-2">{{exp.description}}.</p>
                     </div>
                   </div>
                 </div>
@@ -227,6 +174,100 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row" *ngIf="wantoContactMe && !choosedTheme">
+    <div class="col-lg-12">
+      <h3 class="text-white mt-5">Contact Information</h3>
+    </div>
+  </div>
+
+<div class="row" *ngIf="wantoContactMe && !choosedTheme">
+  <div class="col-lg-12 container">
+    <div class="job-detail mt-2 p-4">
+      <div class="custom-form">
+        <form>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group app-label">
+                <label for="citys" class="text-muted">City</label>
+                <div class="form-button">
+                  <select class="nice-select">
+                    <option data-display="City">City</option>
+                    <option [value]="1">Abilene</option>
+                    <option [value]="2">Babbitt</option>
+                    <option [value]="3">Cape Coral</option>
+                    <option [value]="4">Dallas</option>
+                    <option [value]="5">Eloy</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group app-label">
+                <label for="state" class="text-muted">State</label>
+                <div class="form-button">
+                  <select class="nice-select">
+                    <option data-display="State">State</option>
+                    <option [value]="1">Alabama</option>
+                    <option [value]="3">Hawaii</option>
+                    <option [value]="4">Maine</option>
+                    <option [value]="5">Oregon</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group app-label">
+                <label for="country" class="text-muted">Country</label>
+                <div class="form-button">
+                  <select class="nice-select">
+                    <option data-display="Country">Country</option>
+                    <option [value]="1">Alabama</option>
+                    <option [value]="2">Delaware</option>
+                    <option [value]="3">Iowa</option>
+                    <option [value]="4">Missouri</option>
+                    <option [value]="5">New York</option>
+                    <option [value]="6">Utah</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group app-label">
+                <label for="phone" class="text-muted">Phone</label>
+                <input id="phone" type="text" class="form-control resume" placeholder="">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group app-label">
+                <label for="e-mail" class="text-muted">E-mail</label>
+                <input id="e-mail" type="text" class="form-control resume" placeholder="">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group app-label">
+                <label for="website" class="text-muted">Website</label>
+                <input id="website" type="text" class="form-control resume" placeholder="">
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group app-label">
+                <label for="address">Address</label>
+                <textarea id="address" rows="4" class="form-control resume" placeholder=""></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

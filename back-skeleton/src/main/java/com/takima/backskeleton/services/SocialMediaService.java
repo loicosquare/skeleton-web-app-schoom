@@ -54,10 +54,17 @@ public class SocialMediaService {
     }
 
     public void deleteSocialMedia(Long id) {
-        SocialMedia existingSocialMedia = socialMediaDao.findById(id).orElse(null);
+
+
+        SocialMedia socialMedia = new SocialMedia();
+        socialMedia.setId(id);
+        socialMedia.setUtilisateur(null);
+        this.socialMediaDao.delete(socialMedia);
+
+        /*SocialMedia existingSocialMedia = socialMediaDao.findById(id).orElse(null);
         if (existingSocialMedia == null) {
             throw new IllegalArgumentException("SocialMedia with id " + id + " does not exist");
         }
-        socialMediaDao.deleteById(id);
+        socialMediaDao.deleteById(id);*/
     }
 }

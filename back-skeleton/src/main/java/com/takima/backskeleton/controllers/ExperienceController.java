@@ -2,6 +2,7 @@ package com.takima.backskeleton.controllers;
 
 import com.takima.backskeleton.models.Experience;
 import com.takima.backskeleton.services.ExperienceService;
+import com.takima.backskeleton.utils.ExperienceRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -20,15 +21,9 @@ public class ExperienceController {
     private final ExperienceService experienceService;
 
     @PostMapping("/add")
-    public ResponseEntity<Experience> saveExperience(@RequestParam Long idUtilisateur,
-                                                     @RequestParam String titre,
-                                                     @RequestParam String entreprise,
-                                                     @RequestParam String lieu,
-                                                     @RequestParam String description,
-                                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateDebut,
-                                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateFin) {
+    public ResponseEntity<Experience> saveExperience(@RequestParam Long idUtilisateur, @RequestBody ExperienceRequest experienceRequest) {
 
-        experienceService.saveExperience(idUtilisateur, titre, entreprise, lieu, description, dateDebut, dateFin);
+        experienceService.saveExperience(idUtilisateur, experienceRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

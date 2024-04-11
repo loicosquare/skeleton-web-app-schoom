@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http"
 import {catchError, Observable, tap, throwError} from "rxjs";
 import {Experience} from "../models/experience.model";
+import { ExperienceRequest } from "../models/utils/experienceRequest.model"
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,13 @@ export class ExperienceService {
 
   constructor(private http: HttpClient) { }
 
-  saveExperience(idUtilisateur: number, titre: string, entreprise: string, lieu: string, description: string, dateDebut: string, dateFin: string): Observable<any> {
-    const params = { idUtilisateur, titre, entreprise, lieu, description, dateDebut, dateFin };
-    return this.http.post(`${this.baseUrl}/add`, params)
+  saveExperience(experience: ExperienceRequest, idUtilisateur: number): Observable<Experience> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<Experience>(`${this.baseUrl}/add?idUtilisateur=${idUtilisateur}`, experience, { headers })
       .pipe(
-        tap(console.log),
+        tap((savedExperience: Experience) => {
+          console.log('Expérience enregistrée avec succès:', savedExperience);
+        }),
         catchError(this.handleError)
       );
   }

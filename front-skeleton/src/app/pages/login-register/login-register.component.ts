@@ -70,7 +70,7 @@ export class LoginRegisterComponent  implements OnInit{
       () => {
         console.log("Login completed");
         this.refreshing = false;
-        this.notificationService.onInfo("Login completed");
+        //this.notificationService.onInfo("Login completed");
 
         // Stockez l'objet utilisateur dans le localStorage
         localStorage.setItem('currentUser', JSON.stringify(this.loggedUser));
