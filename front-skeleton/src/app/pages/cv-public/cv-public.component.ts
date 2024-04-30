@@ -4,11 +4,12 @@ import {Competence} from "../../models/competence.model";
 import {Loisir} from "../../models/loisir.model";
 import {Experience} from "../../models/experience.model";
 import {Utilisateur} from "../../models/utilisateur.model";
-import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { NgForOf, NgIf } from "@angular/common"
 import { NotificationService } from "../../services/notification.service"
 import { MatListItem, MatNavList } from "@angular/material/list"
 import { RouterLink, RouterLinkActive } from "@angular/router"
+import { ColorPickerModule } from "ngx-color-picker"
 
 @Component({
   selector: 'cv-public',
@@ -21,6 +22,8 @@ import { RouterLink, RouterLinkActive } from "@angular/router"
     MatNavList,
     RouterLink,
     RouterLinkActive,
+    ColorPickerModule,
+    FormsModule,
   ],
   templateUrl: './cv-public.component.html',
   styleUrl: './cv-public.component.scss'
@@ -35,8 +38,9 @@ export class CvPublicComponent implements OnInit {
   currentCompetence! : any;
   currentLoisir! : any;
   currentSocialMedias! : any;
-  filename!: string
-  wantoContactMe!: boolean
+  filename!: string;
+  wantoContactMe!: boolean;
+  selectedColor: string = 'linear-gradient(to right, #4a0a67, #d50000)';
 
 
   constructor(private formBuilder: FormBuilder,
@@ -98,5 +102,9 @@ export class CvPublicComponent implements OnInit {
 
   contactMe() : void {
     this.wantoContactMe = true;
+  }
+
+  updateBackgroundColor(color: string) {
+    this.selectedColor = color;
   }
 }

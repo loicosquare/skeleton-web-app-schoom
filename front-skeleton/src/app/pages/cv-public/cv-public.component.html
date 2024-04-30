@@ -12,7 +12,9 @@
       <option value="2">CV Pdf</option>
     </select>
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-4 d-flex">
+    <input type="text" [(colorPicker)]="selectedColor" [style.background]="selectedColor" [(ngModel)]="selectedColor" (change)="updateBackgroundColor(selectedColor)" class="color-picker-input"/>
+  </div>
 </div>
 <div *ngIf="choosedTheme == 1">
   <div class="section">
@@ -69,7 +71,7 @@
     <div class="col-md-9">
       <div class="row align-items-center">
         <div class="col-lg-5">
-          <div class="resume-base cardDeGacuhe user-dashboard-info-box p-4">
+          <div class="resume-base cardDeGacuhe user-dashboard-info-box p-4" [style.background]="selectedColor">
             <div class="profile">
               <div class="jobster-user-info">
                 <div class="profile-avatar">

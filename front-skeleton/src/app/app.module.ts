@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core"
 import { BrowserModule } from "@angular/platform-browser"
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppRoutingModule } from "app-routing.module"
 import { AppComponent } from "app.component"
@@ -39,6 +40,7 @@ import { ToastrModule } from "ngx-toastr"
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

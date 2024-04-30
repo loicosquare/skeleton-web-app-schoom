@@ -293,3 +293,21 @@
 h3.text-white {
   background: linear-gradient(to right, #4a0a67, #d50000);
 }
+
+.color-picker-input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.color-picker-input:hover {
+  border-color: #999;
+}
+
+.color-picker-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
