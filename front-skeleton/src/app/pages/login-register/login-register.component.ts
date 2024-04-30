@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators} from "@angular/forms";
 import {LoginRegisterService} from "../../services/login-register.service";
 import {Utilisateur} from "../../models/utilisateur.model";
-import {Router} from "@angular/router";
+import { Router, RouterLink } from "@angular/router"
 import {NgIf} from "@angular/common";
 import { NotificationService } from "../../services/notification.service"
 
@@ -12,7 +12,8 @@ import { NotificationService } from "../../services/notification.service"
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    RouterLink,
   ],
   templateUrl: './login-register.component.html',
   styleUrl: './login-register.component.scss'
@@ -23,6 +24,8 @@ export class LoginRegisterComponent  implements OnInit{
   registerForm: FormGroup;
   loggedUser!: Utilisateur;
   public refreshing! : boolean;
+  public loginRegister : boolean = false;
+  public cvThequeChoosed : boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private loginRegisterService: LoginRegisterService,
@@ -55,6 +58,10 @@ export class LoginRegisterComponent  implements OnInit{
         this.refreshing = false;
         this.notificationService.onSuccess("Login success");
 
+        //cvThequeChoosed est initialisé à false par défaut lors de la connexion.
+        this.cvThequeChoosed = false;
+        localStorage.setItem('cvThequeChoosed', String(false));
+
         // Supprimez l'objet utilisateur du localStorage s'il existe
         if(localStorage.getItem('currentUser') != null){
           localStorage.removeItem('currentUser');
@@ -81,5 +88,19 @@ export class LoginRegisterComponent  implements OnInit{
         }
       }
     );
+  }
+
+  hideDiv() {
+    if (!this.loginRegister) {
+      this.loginRegister = !this.loginRegister;
+    }
+  }
+
+  goToCvTheque() {
+    this.router.navigate(['/cv-theque']).then(r => {
+      console.log(r);
+      this.cvThequeChoosed = true;
+      localStorage.setItem('cvThequeChoosed', String(true));
+    });
   }
 }

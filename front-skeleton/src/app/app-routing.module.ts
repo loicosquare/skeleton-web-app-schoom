@@ -12,6 +12,7 @@ import { MajorStudentsComponent } from "majors/major-students/major-students.com
 import {UserComponent} from "./pages/profile/profile.component";
 import {LoginRegisterComponent} from "./pages/login-register/login-register.component";
 import {CvPublicComponent} from "./pages/cv-public/cv-public.component";
+import { CvThequeComponent } from "./pages/cv-theque/cv-theque.component"
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -55,6 +56,11 @@ const routes: Routes = [
     path: "cv-public",
     component: CvPublicComponent,
   },
+  {
+    path: "cv-theque",
+    component: CvThequeComponent,
+  },
+  { path: "**", redirectTo: "" },
 ]
 
 @NgModule({

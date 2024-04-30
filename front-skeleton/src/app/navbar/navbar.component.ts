@@ -10,6 +10,7 @@ import { Utilisateur } from "../models/utilisateur.model"
 export class NavbarComponent implements OnInit{
   links: Link[] = []
   currentUser!: Utilisateur;
+  public isCvThequeChoosed: boolean = false;
 
   constructor() {
     this.links.push({ name: "Profil", href: "/profile" })
@@ -18,5 +19,8 @@ export class NavbarComponent implements OnInit{
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    if(localStorage.getItem('cvThequeChoosed') != null && localStorage.getItem('cvThequeChoosed') === 'true') {
+      this.isCvThequeChoosed = true;
+    }
   }
 }

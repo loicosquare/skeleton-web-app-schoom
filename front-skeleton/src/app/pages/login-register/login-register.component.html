@@ -1,11 +1,19 @@
 <span class="title">Re-bonjour à vous !</span>
+<span class="title mt-5">Connectez-vous pour créer/personnaliser un CV 😊.</span>
 <div>
-  <span class="welcome">Bienvenue sur la page de Login/Register </span>
-  <img src="assets/sun.gif" height="100">
+  <span class="welcome">Choisissez une action</span>
+  <img src="assets/sun.gif" height="100" alt="">
 </div>
-<span class="title">Nous vous recommandons de créer un compte ou de vous connecter 😊</span>
+<div class="row">
+  <div class="col-md-7">
+    <button class="btn mr-2 d-inline-block" (click)="hideDiv()">Se connecter / S'inscrire</button>
+  </div>
+  <div class="col-md-4">
+    <button class="btn d-inline-block" routerLink="/cv-theque" (click)="goToCvTheque()">Voir les Cvs</button>
+  </div>
+</div>
 
-<div class="container">
+<div class="container mt-5" *ngIf="loginRegister">
   <div class="card">
     <h2>Connexion</h2>
     <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">

@@ -14,6 +14,16 @@ export class UtilisateurService {
 
   constructor(private http: HttpClient) { }
 
+  getUtilisateurs(): Observable<Utilisateur[]> {
+    return this.http.get<Utilisateur[]>(this.apiUrl+"/all")
+      .pipe(
+        tap((utilisateurs: Utilisateur[]) => {
+          console.log('Utilisateurs récupérés avec succès:', utilisateurs);
+        }),
+        catchError(this.handleError)
+      );
+  }
+
   updateUtilisateur(utilisateurRequest: UtilisateurRequest): Observable<Utilisateur> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post<Utilisateur>(`${this.apiUrl}/add`, utilisateurRequest, { headers })

@@ -172,6 +172,37 @@
                 </div>
               </div>
             </div>
+            <div class="timeline-box">
+              <h5 class="resume-experience-title">Hobbies:</h5>
+              <div class="jobster-candidate-timeline" *ngFor="let hobby of currentLoisir; let i = index">
+                <div class="jobster-timeline-item">
+                  <div class="jobster-timeline-cricle">
+                    <i class="far fa-circle"></i>
+                  </div>
+                  <div class="jobster-timeline-info">
+                    <div class="dashboard-timeline-info">
+                      <span class="jobster-timeline-time">{{ hobby.hobby }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-box">
+              <h5 class="resume-experience-title">Socials Medias:</h5>
+              <div class="jobster-candidate-timeline" *ngFor="let reseau of currentSocialMedias; let i = index">
+                <div class="jobster-timeline-item">
+                  <div class="jobster-timeline-cricle">
+                    <i class="far fa-circle"></i>
+                  </div>
+                  <div class="jobster-timeline-info">
+                    <div class="dashboard-timeline-info">
+                      <span class="jobster-timeline-time">{{ reseau.type }}</span>
+                      <h6>{{ reseau.lien }}</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

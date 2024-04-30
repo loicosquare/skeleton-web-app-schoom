@@ -1,0 +1,35 @@
+<span class="title">Bienvenue dans la Cv-thèque ({{usersList.length}} - Cvs)</span>
+<div>
+  <span class="welcome">Cliquez sur un cv pour le visualiser</span>
+  <img ngSrc="assets/sun.gif" height="100" alt="" width="100">
+</div>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-xl-3" *ngFor="let user of usersList">
+      <div class="card m-b-30" (click)="chooseUser(user.id)">
+        <div class="card-body row">
+          <div class="col-6">
+            <a ><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="img-fluid rounded-circle w-60"></a>
+          </div>
+          <div class="col-6 card-title align-self-center mb-0">
+            <h5>{{user.name}} - {{user.username}}</h5>
+            <p class="m-0">{{ user.pays }}</p>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a >{{user.email}}</a></li>
+          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{user.telephone}}</li>
+        </ul>
+        <div class="card-body text-center">
+          <ul class="social-links list-inline mb-0">
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"  data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"  data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips"  data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
