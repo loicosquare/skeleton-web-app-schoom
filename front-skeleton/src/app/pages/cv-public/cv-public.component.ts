@@ -1,14 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Formation} from "../../models/formation.model";
-import {Competence} from "../../models/competence.model";
-import {Loisir} from "../../models/loisir.model";
-import {Experience} from "../../models/experience.model";
 import {Utilisateur} from "../../models/utilisateur.model";
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { NgForOf, NgIf } from "@angular/common"
 import { NotificationService } from "../../services/notification.service"
 import { MatListItem, MatNavList } from "@angular/material/list"
-import { RouterLink, RouterLinkActive } from "@angular/router"
+import { Router, RouterLink, RouterLinkActive } from "@angular/router"
 import { ColorPickerModule } from "ngx-color-picker"
 
 @Component({
@@ -39,12 +35,11 @@ export class CvPublicComponent implements OnInit {
   currentLoisir! : any;
   currentSocialMedias! : any;
   filename!: string;
-  wantoContactMe!: boolean;
   selectedColor: string = 'linear-gradient(to right, #4a0a67, #d50000)';
 
-
   constructor(private formBuilder: FormBuilder,
-              private notificationService: NotificationService,) {
+              private notificationService: NotificationService,
+              private router: Router) {
     this.myForm = this.formBuilder.group({
       theme: ['']
     });
@@ -69,7 +64,6 @@ export class CvPublicComponent implements OnInit {
   onThemeChange(event: any) {
     this.choosedTheme = event.target.value;
     this.notificationService.onWarning("Vous avez choisi le thème " + this.choosedTheme);
-    this.wantoContactMe = false;
   }
 
   exportToJson(): void {
@@ -101,7 +95,7 @@ export class CvPublicComponent implements OnInit {
   }
 
   contactMe() : void {
-    this.wantoContactMe = true;
+    this.router.navigate(['/contact-me']);
   }
 
   updateBackgroundColor(color: string) {

@@ -1,4 +1,6 @@
 /.idea/
+#Ajouter le node_modules
+node_modules/
 # System files
 .DS_Store
 Thumbs.db

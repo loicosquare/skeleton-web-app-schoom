@@ -1,9 +1,11 @@
 package com.takima.backskeleton.services;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.takima.backskeleton.models.ContactForm;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +27,7 @@ public class EmailService {
     public void send(
             String to,
             String username,
-            String confirmationUrl
+            ContactForm contactForm
     ) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(
@@ -35,18 +37,17 @@ public class EmailService {
         );
         Map<String, Object> properties = new HashMap<>();
         properties.put("username", username);
-        properties.put("confirmationUrl", confirmationUrl);
+        //properties.put("confirmationUrl", confirmationUrl);
 
         Context context = new Context();
         context.setVariables(properties);
 
-        helper.setFrom("bouali.social@gmail.com");
+        helper.setFrom(contactForm.getEmail());
         helper.setTo(to);
-        helper.setSubject("Welcome to our nice platform");
-
-        //String template = templateEngine.process("PERTE", context);
-
-        helper.setText(confirmationUrl + "/" + "hjgjhg", false);
+        helper.setSubject(contactForm.getTitle() + " from " + contactForm.getCity() + ", " + contactForm.getState() + ", " + contactForm.getCountry());
+        helper.setText(contactForm.getMessage(), true);
+        helper.setSentDate(new Date());
+        //helper.setText(confirmationUrl + "/" + "hjgjhg", false);
 
         mailSender.send(mimeMessage);
     }

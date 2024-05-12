@@ -18,6 +18,7 @@ import { MajorStudentsComponent } from "majors/major-students/major-students.com
 import { HttpClientModule } from "@angular/common/http"
 import {CommonModule} from "@angular/common";
 import { ToastrModule } from "ngx-toastr"
+import { EditorModule } from "@tinymce/tinymce-angular"
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ToastrModule } from "ngx-toastr"
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    ColorPickerModule
+    ColorPickerModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

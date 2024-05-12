@@ -115,13 +115,6 @@
               </div>
 
               <div class="col-lg-6">
-                <div class="form-group app-label">
-                  <label for="diplome" class="text-muted">Degree/Certification/Diplome</label>
-                  <input id="diplome" type="text" class="form-control resume" formControlName="diplome" placeholder="">
-                </div>
-              </div>
-
-              <div class="col-lg-6">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group app-label">
@@ -142,6 +135,27 @@
                       <input id="id" type="text" class="form-control resume" formControlName="id" placeholder="">
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group app-label">
+                  <label for="diplome" class="text-muted">Degree/Certification/Diplome</label>
+                  <editor formControlName="diplome" apiKey="4jzmhie3bdyp6fofuvz01dm6xnn9jrkcqs0jif5ixnif8v2c" id="diplome"
+                          [init]="{
+                        height: 250,
+                        menubar: true,
+                        plugins: [
+                          'advlist autolink lists link image',
+                          'charmap print preview anchor help',
+                          'searchreplace visualblocks code',
+                          'insertdatetime media table paste wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help'
+                      }"
+                  ></editor>
+                  <!--<input id="diplome" type="text" class="form-control resume" formControlName="diplome" placeholder="">-->
                 </div>
               </div>
             </div>
@@ -308,7 +322,21 @@
               <div class="col-lg-12">
                 <div class="form-group app-label">
                   <label for="addition-information-1">Description</label>
-                  <textarea id="addition-information-1" rows="4" class="form-control resume" formControlName="description" placeholder="Décrivez"></textarea>
+                  <editor formControlName="description" apiKey="4jzmhie3bdyp6fofuvz01dm6xnn9jrkcqs0jif5ixnif8v2c" id="addition-information-1"
+                    [init]="{
+                        height: 250,
+                        menubar: true,
+                        plugins: [
+                          'advlist autolink lists link image',
+                          'charmap print preview anchor help',
+                          'searchreplace visualblocks code',
+                          'insertdatetime media table paste wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help'
+                      }"
+                  ></editor>
+                  <!--<textarea id="addition-information-1" rows="4" class="form-control resume" formControlName="description" placeholder="Décrivez"></textarea>-->
                 </div>
               </div>
 
@@ -443,7 +471,21 @@
               <div class="col-lg-12">
                 <div class="form-group app-label">
                   <label for="skills" class="text-muted">Competence</label>
-                  <input id="skills" type="text" class="form-control resume" formControlName="competence" placeholder="HTML, CSS, PHP, javascript, ...">
+                  <editor formControlName="competence" apiKey="4jzmhie3bdyp6fofuvz01dm6xnn9jrkcqs0jif5ixnif8v2c" id="skills"
+                          [init]="{
+                        height: 250,
+                        menubar: true,
+                        plugins: [
+                          'advlist autolink lists link image',
+                          'charmap print preview anchor help',
+                          'searchreplace visualblocks code',
+                          'insertdatetime media table paste wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help'
+                      }"
+                  ></editor>
+                  <!--<input id="skills" type="text" class="form-control resume" formControlName="competence" placeholder="HTML, CSS, PHP, javascript, ...">-->
                 </div>
               </div>
               <div class="col-lg-12">
@@ -538,7 +580,21 @@
                   <div class="col-lg-12">
                     <div class="form-group app-label">
                       <label for="hobby" class="text-muted">Hobby</label>
-                      <input id="hobby" type="text" class="form-control resume" formControlName="hobby" placeholder="Hobby">
+                      <editor formControlName="hobby" apiKey="4jzmhie3bdyp6fofuvz01dm6xnn9jrkcqs0jif5ixnif8v2c" id="hobby"
+                              [init]="{
+                        height: 250,
+                        menubar: true,
+                        plugins: [
+                          'advlist autolink lists link image',
+                          'charmap print preview anchor help',
+                          'searchreplace visualblocks code',
+                          'insertdatetime media table paste wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help'
+                      }"
+                      ></editor>
+                      <!--<input id="hobby" type="text" class="form-control resume" formControlName="hobby" placeholder="Hobby">-->
                     </div>
                   </div>
                 </div>
@@ -594,7 +650,21 @@
                   <div class="col-lg-12">
                     <div class="form-group app-label">
                       <label for="social-media" class="text-muted">Lien du Social Media</label>
-                      <input id="social-media" type="text" class="form-control resume" formControlName="type" placeholder="Social Media">
+                      <editor formControlName="type" apiKey="4jzmhie3bdyp6fofuvz01dm6xnn9jrkcqs0jif5ixnif8v2c" id="social-media"
+                              [init]="{
+                        height: 250,
+                        menubar: true,
+                        plugins: [
+                          'advlist autolink lists link image',
+                          'charmap print preview anchor help',
+                          'searchreplace visualblocks code',
+                          'insertdatetime media table paste wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | removeformat | help'
+                      }"
+                      ></editor>
+                      <!--<input id="social-media" type="text" class="form-control resume" formControlName="type" placeholder="Social Media">-->
                     </div>
                   </div>
                   <div class="col-lg-12">

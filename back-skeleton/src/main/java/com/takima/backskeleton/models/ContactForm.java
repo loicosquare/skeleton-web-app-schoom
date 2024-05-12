@@ -18,6 +18,11 @@ public class ContactForm {
     @Id
     @GeneratedValue
     private Long id;
-
-
+    private String city;
+    private String country;
+    private String state;
+    private String email;
+    private String title;
+    private String message;
+    private String phone;
 }

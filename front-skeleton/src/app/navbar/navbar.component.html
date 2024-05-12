@@ -1,6 +1,6 @@
 <nav>
-  <div *ngIf="!isCvThequeChoosed">
-    <img src="assets/takima-logo.png" routerLink="" />
+  <div *ngIf="isCvThequeChoosed === '1'">
+    <img src="assets/takima-logo.png" />
     <mat-nav-list>
       @for (link of links; track link) {
         <a mat-list-item routerLink="{{ link.href }}" routerLinkActive="active">
@@ -9,7 +9,7 @@
       }
     </mat-nav-list>
   </div>
-  <div class="right-nav" *ngIf="!isCvThequeChoosed">
+  <div class="right-nav" *ngIf="isCvThequeChoosed === '1'">
     <mat-nav-list>
       <a mat-list-item routerLink="/profile" routerLinkActive="active">
         <div style="display: flex; flex-direction: column; align-items: center; color: white;">

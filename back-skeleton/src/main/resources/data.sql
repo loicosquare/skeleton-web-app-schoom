@@ -1,6 +1,24 @@
+-- -- Vider la table utilisateur
+-- TRUNCATE TABLE utilisateur CASCADE;
+--
+-- -- Vider la table formation
+-- TRUNCATE TABLE formation;
+--
+-- -- Vider la table experience
+-- TRUNCATE TABLE experience;
+--
+-- -- Vider la table competence
+-- TRUNCATE TABLE competence CASCADE;
+--
+-- -- Vider la table loisir
+-- TRUNCATE TABLE loisir;
+--
+-- -- Vider la table social_media
+-- TRUNCATE TABLE social_media;
+
 -- Insertion des 10 utilisateurs.
 INSERT INTO utilisateur (id, email, name, password, pays, profile_picture, telephone, username, ville) VALUES
-(1, 'utilisateur1@example.com', 'Utilisateur 1', 'motdepasse1', 'France', 'profile1.jpg', '123456789', 'utilisateur1', 'Paris'),
+(1, 'admin@takima.com', 'admin', 'admin', 'France', 'admin.png', '123456789', 'admin', 'Paris'),
 (2, 'utilisateur2@example.com', 'Utilisateur 2', 'motdepasse2', 'USA', 'profile2.jpg', '987654321', 'utilisateur2', 'New York'),
 (3, 'utilisateur3@example.com', 'Utilisateur 3', 'motdepasse3', 'Allemagne', 'profile3.jpg', '567890123', 'utilisateur3', 'Berlin'),
 (4, 'utilisateur4@example.com', 'Utilisateur 4', 'motdepasse4', 'Japon', 'profile4.jpg', '345678901', 'utilisateur4', 'Tokyo'),
@@ -62,3 +80,16 @@ INSERT INTO social_media (id_utilisateur, type, lien) VALUES
 (3, 'YouTube', 'https://www.youtube.com/utilisateur3'),
 (3, 'Twitter', 'https://twitter.com/utilisateur3'),
 (4, 'LinkedIn', 'https://www.linkedin.com/in/utilisateur4');
+
+-- Insertion des 10 expériences professionnelles.
+INSERT INTO experience (id_utilisateur, poste, entreprise, lieu, annee_debut, annee_fin, description) VALUES
+(1, 'Développeur Java', 'Takima', 'Paris', '2019-07-01', '2021-06-30', 'Développement de logiciels Java pour des clients internationaux.'),
+(1, 'Stagiaire Développeur Web', 'Coding Academy', 'Lyon', '2020-01-15', '2020-06-30', 'Développement de sites web pour des clients locaux.'),
+(2, 'Data Scientist', 'Google', 'Mountain View', '2020-07-01', '2021-06-30', 'Analyse des données pour améliorer les produits Google.'),
+(2, 'Stagiaire Data Analyst', 'Facebook', 'Menlo Park', '2019-07-01', '2019-12-31', 'Analyse des données pour améliorer les produits Facebook.'),
+(3, 'Ingénieur Logiciel', 'Amazon', 'Seattle', '2021-07-01', '2022-06-30', 'Développement de logiciels pour les services Amazon.'),
+(3, 'Stagiaire Développeur Python', 'Microsoft', 'Redmond', '2020-10-15', '2021-03-31', 'Développement de scripts Python pour automatiser des tâches.'),
+(4, 'Ingénieur Réseau', 'Cisco', 'San Jose', '2021-07-01', '2022-06-30', 'Configuration et maintenance des réseaux Cisco.'),
+(4, 'Stagiaire Cybersécurité', 'IBM', 'Armonk', '2021-01-15', '2021-06-30', 'Analyse des vulnérabilités des systèmes informatiques.'),
+(5, 'Ingénieur Réseau', 'Apple', 'Cupertino', '2021-07-01', '2022-06-30', 'Configuration et maintenance des réseaux Apple.'),
+(5, 'Stagiaire Qualité Logicielle', 'Netflix', 'Los Gatos', '2020-09-01', '2020-12-31', 'Tests de qualité des logiciels Netflix.');

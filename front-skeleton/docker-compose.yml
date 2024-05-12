@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  angular-app:
+    build: .
+    container_name: front-skeleton
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./:/front-skeleton
+    environment:
+      - STYLE=scss

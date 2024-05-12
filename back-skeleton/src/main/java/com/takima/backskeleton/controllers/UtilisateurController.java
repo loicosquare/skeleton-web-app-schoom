@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @CrossOrigin("*")
 @RequestMapping("utilisateurs")
@@ -17,6 +19,11 @@ import org.springframework.web.bind.annotation.*;
 public class UtilisateurController {
 
     private final UtilisateurService utilisateurService;
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Utilisateur>> getAllUsers() {
+        return new ResponseEntity<> (utilisateurService.getAllUtilisateurs(), HttpStatus.OK);
+    }
 
     @PostMapping("/add")
     public ResponseEntity<Utilisateur> saveUser(@RequestBody Utilisateur utilisateur) {

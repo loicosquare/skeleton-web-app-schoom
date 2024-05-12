@@ -25,7 +25,7 @@ export class LoginRegisterComponent  implements OnInit{
   loggedUser!: Utilisateur;
   public refreshing! : boolean;
   public loginRegister : boolean = false;
-  public cvThequeChoosed : boolean = false;
+  public cvThequeChoosed! : string;
 
   constructor(private formBuilder: FormBuilder,
               private loginRegisterService: LoginRegisterService,
@@ -59,15 +59,13 @@ export class LoginRegisterComponent  implements OnInit{
         this.notificationService.onSuccess("Login success");
 
         //cvThequeChoosed est initialisé à false par défaut lors de la connexion.
-        this.cvThequeChoosed = false;
-        localStorage.setItem('cvThequeChoosed', String(false));
+        this.cvThequeChoosed = '1';
+        localStorage.setItem('cvThequeChoosed', this.cvThequeChoosed);
 
         // Supprimez l'objet utilisateur du localStorage s'il existe
         if(localStorage.getItem('currentUser') != null){
           localStorage.removeItem('currentUser');
         }
-
-        console.log(response);
       },
       (error) => {
         console.error("Login error:", error);
@@ -84,7 +82,7 @@ export class LoginRegisterComponent  implements OnInit{
 
         //On redirige l'utilisateur vers la page du cv si le login est réussi
         if(localStorage.getItem('currentUser') != null){
-          this.router.navigate(['/cv-public']).then(r => console.log(r));
+          this.router.navigate(['/cv-public']).then(r => location.reload());
         }
       }
     );
@@ -99,8 +97,9 @@ export class LoginRegisterComponent  implements OnInit{
   goToCvTheque() {
     this.router.navigate(['/cv-theque']).then(r => {
       console.log(r);
-      this.cvThequeChoosed = true;
-      localStorage.setItem('cvThequeChoosed', String(true));
+      this.cvThequeChoosed = '0';
+      localStorage.setItem('cvThequeChoosed', this.cvThequeChoosed);
+      location.reload();
     });
   }
 }

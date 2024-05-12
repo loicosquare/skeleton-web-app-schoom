@@ -1,0 +1,82 @@
+<div class="welcome">
+  <span class="welcome">Remplissez le formulaire de contact</span>
+  <img src="assets/sun.gif" height="100">
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="job-detail mt-2 p-4">
+      <div class="custom-form">
+        <form [formGroup]="contactMeForm" (ngSubmit)="contactMe()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group app-label">
+                <label for="city" class="text-muted">City</label>
+                <input id="city" type="text" class="form-control" formControlName="city" placeholder="Enter your city">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group app-label">
+                <label for="state" class="text-muted">State</label>
+                <input id="state" type="text" class="form-control" formControlName="state" placeholder="Enter your state">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group app-label">
+                <label for="country" class="text-muted">Country</label>
+                <input id="country" type="text" class="form-control" formControlName="country" placeholder="Enter your country">
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group app-label">
+                    <label for="phone" class="text-muted">Phone</label>
+                    <input id="phone" type="number" class="form-control" formControlName="phone" placeholder="Enter your phone number">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group app-label">
+                    <label for="title" class="text-muted">Title</label>
+                    <input id="title" type="text" class="form-control resume" formControlName="title" placeholder="Enter your message title">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group app-label">
+                    <label for="email" class="text-muted">Email</label>
+                    <input id="email" type="email" class="form-control resume" formControlName="email" placeholder="Enter your email">
+                  </div>
+                </div>
+                <div class="col-md-4" style="display: none">
+                  <div class="form-group app-label">
+                    <label for="id" class="text-muted">id</label>
+                    <input id="id" type="text" class="form-control resume" formControlName="id" placeholder="">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group app-label">
+                <label for="message" class="text-muted">Message</label>
+                <textarea id="message" rows="4" class="form-control resume" formControlName="message" placeholder="Enter your message"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="text-center d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-success" [disabled]="!contactMeForm.valid">Contactez moi<i class="fas fa-spinner fa-spin" *ngIf="refreshing"></i></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,7 @@ import { SocialMedia } from "../../models/social-media.model"
 import { MatTab, MatTabGroup } from "@angular/material/tabs"
 import { MatTooltip } from "@angular/material/tooltip"
 import { MatIcon } from "@angular/material/icon"
+import { EditorComponent } from "@tinymce/tinymce-angular"
 
 @Component({
   selector: 'profile',
@@ -33,6 +34,7 @@ import { MatIcon } from "@angular/material/icon"
     MatTabGroup,
     MatTooltip,
     MatIcon,
+    EditorComponent,
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
@@ -182,6 +184,7 @@ export class UserComponent implements OnInit{
         this.formationForm.reset();
         this.getUserFormations();
         this.refreshing = false;
+        this.formationForm.reset();
       },
       error: (error: any) => {
         console.log(error);
@@ -220,6 +223,7 @@ export class UserComponent implements OnInit{
         this.notificationService.onSuccess("Skill added successfully");
         this.getUserCompetences();
         this.refreshing = false;
+        this.competenceForm.reset();
       },
       error: (error: any) => {
         console.log(error);
@@ -381,6 +385,7 @@ export class UserComponent implements OnInit{
         this.notificationService.onSuccess("Experience added successfully");
         this.getUserExperiences();
         this.refreshing = false;
+        this.experienceForm.reset();
       },
       error: (error: any) => {
         console.log(error);
@@ -438,6 +443,7 @@ export class UserComponent implements OnInit{
         this.notificationService.onSuccess("Hobby added successfully");
         this.getUserLoisirs();
         this.refreshing = false;
+        this.loisirForm.reset();
       },
       error: (error: any) => {
         console.log(error);
@@ -495,6 +501,7 @@ export class UserComponent implements OnInit{
         this.notificationService.onSuccess("Social media added successfully");
         this.getUserSocialMedias();
         this.refreshing = false;
+        this.socialMediaForm.reset();
       },
       error: (error: any) => {
         console.log(error);
@@ -557,5 +564,9 @@ export class UserComponent implements OnInit{
 
   isEqual(option: string): boolean {
     return this.selectedSocialMedia && this.selectedSocialMedia.type.toLowerCase() === option.toLowerCase(); // Eviter les problème de la casse par exemple si on entre WhatsApp ou whatsapp ou WHATSAPP ou whatsApp c'est pareil.
+  }
+
+  onChange(event : any) {
+    console.log(event);
   }
 }

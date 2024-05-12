@@ -23,6 +23,21 @@ public class UtilisateurService {
     private final SocialMediaDao socialMediaDao;
     private final EmailService emailService;
 
+    public List<Utilisateur> getAllUtilisateurs() {
+        return utilisateurDao.findAll().stream().peek(utilisateur -> {
+            List<Competence> userCompetence = competenceDao.findAllByUtilisateurId(utilisateur.getId());
+            List<Experience> userExperience = experienceDao.findAllByUtilisateurId(utilisateur.getId());
+            List<Formation> userFormation = formationDao.findAllByUtilisateurId(utilisateur.getId());
+            List<Loisir> userLoisir = loisirDao.findAllByUtilisateurId(utilisateur.getId());
+            List<SocialMedia> userSocialMedia = socialMediaDao.findAllByUtilisateurId(utilisateur.getId());
+            utilisateur.setCompetences(userCompetence);
+            utilisateur.setExperiences(userExperience);
+            utilisateur.setFormations(userFormation);
+            utilisateur.setLoisirs(userLoisir);
+            utilisateur.setSocialMedias(userSocialMedia);
+        }).toList();
+    }
+
     public Utilisateur saveUser(Utilisateur utilisateur) {
         return utilisateurDao.save(utilisateur);
     }
@@ -77,22 +92,24 @@ public class UtilisateurService {
         existingUser.setFormations(userFormation);
         existingUser.setLoisirs(userLoisir);
         existingUser.setSocialMedias(userSocialMedia);
-        sendEmail(existingUser);
         return existingUser;
     }
 
-    public void sendEmail(Utilisateur utilisateur) {
+    public boolean sendEmail(UtilisateurRequest utilisateur, ContactForm contactForm) {
         // Send the confirmation email
         try {
             emailService.send(
                     utilisateur.getEmail(),
-                    utilisateur.getUsername()   + " " + utilisateur.getName() + " " +
-                    null,
-                    String.format("PERTE U", "yoooo")
+                    utilisateur.getUsername(),
+                    contactForm
             );
+
+            return true; // Email envoyé avec succès
         } catch (MessagingException e) {
             e.printStackTrace();
+            return false; // Échec de l'envoi de l'email
         }
     }
+
 }
 

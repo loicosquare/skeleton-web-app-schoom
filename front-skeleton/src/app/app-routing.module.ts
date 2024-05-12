@@ -13,6 +13,7 @@ import {UserComponent} from "./pages/profile/profile.component";
 import {LoginRegisterComponent} from "./pages/login-register/login-register.component";
 import {CvPublicComponent} from "./pages/cv-public/cv-public.component";
 import { CvThequeComponent } from "./pages/cv-theque/cv-theque.component"
+import { ContactMeComponent } from "./pages/contact-me/contact-me.component"
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path: "cv-theque",
     component: CvThequeComponent,
+  },
+  {
+    path: "contact-me",
+    component: ContactMeComponent,
   },
   { path: "**", redirectTo: "" },
 ]
